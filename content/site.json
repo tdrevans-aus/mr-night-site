@@ -1,0 +1,324 @@
+{
+  "name": "Mr Night",
+  "tagline": "Private Luxury Van · Siem Reap",
+  "whatsapp": "85517843878",
+  "phone_display": "+855 17 843 878",
+  "email": "",
+  "google_maps_url": "",
+  "facebook_url": "",
+  "reply_time": "",
+  "currency": "US$",
+  "last_updated": "",
+  "seo": {
+    "title": "Mr Night · Private Luxury Van in Siem Reap · Airport Pick-ups & Temple Days",
+    "description": "Mr Night drives a private Toyota Alphard luxury van with reclining massage seats in Siem Reap, Cambodia. SAI airport pick-ups, temple days and city transfers, with cold water and cold towels. Message on WhatsApp."
+  },
+  "vehicle": {
+    "model": "Toyota Alphard",
+    "seats": "",
+    "massage_seats": ""
+  },
+  "photos": {
+    "night": "",
+    "van_outside": "",
+    "van_inside": "",
+    "van_seats": "",
+    "guests": ""
+  },
+  "hero": {
+    "eyebrow": "Siem Reap · Cambodia",
+    "title": "Your private luxury van in Siem Reap.",
+    "highlight": "luxury van",
+    "text": "Airport pick-ups, temple days and city transfers with Mr Night. Relax in reclining massage seats, with cool air-con, cold water and cold towels after every stop.",
+    "button": "Message Mr Night on WhatsApp",
+    "message": "Hi Mr Night, I found your website. I would like to book your van. Dates: ___ People: ___ Trip: ___"
+  },
+  "book_now_pay_later": {
+    "show": true,
+    "confirmed": false,
+    "text": "Pay on the day, after your trip."
+  },
+  "border": {
+    "show": true,
+    "date": "",
+    "note": "Please message me to check the current border status before you travel.",
+    "fly_note": "Flying from Bangkok? The flight is about 1 hour, and I can meet you at SAI airport."
+  },
+  "trips": {
+    "heading": "All trips and prices",
+    "intro": "One simple price for the whole van, not per person. Fuel, cold water and cold towels are always included.",
+    "featured_eyebrow": "Featured trips",
+    "featured_heading": "My favourite trips",
+    "featured_intro": "Every price is for the whole van, not per person.",
+    "featured": [
+      {
+        "title": "Temple day",
+        "kicker": "🛕 Full day",
+        "text": "One full day at Angkor Wat and the main temples, in my Toyota Alphard. Rest in a cool massage seat between temples.",
+        "note": "I'm your driver, not your guide; a licensed guide on request.",
+        "quote": "",
+        "highlight": false,
+        "price": "",
+        "from": false,
+        "image": "/images/stock/angkor-pond.jpg",
+        "message": "Hi Mr Night, I would like the Temple day (Angkor Wat and the main temples). Date: ___ People: ___ Hotel: ___"
+      },
+      {
+        "title": "[waterfall, confirm: Kulen?]",
+        "kicker": "🌿 About 1.5 hours away",
+        "text": "A full day out of town to the waterfall, about 1.5 hours from Siem Reap. Relax in the van on the way there and back.",
+        "note": "",
+        "quote": "",
+        "highlight": false,
+        "price": "",
+        "from": false,
+        "image": "",
+        "message": "Hi Mr Night, I would like the Waterfall day trip. Date: ___ People: ___ Hotel: ___"
+      },
+      {
+        "title": "Airport pick-up and transfers",
+        "kicker": "✈ SAI · about 50 km",
+        "text": "The new Siem Reap airport (SAI) is about 50 km from town, about 1 hour. I watch your flight and wait at arrivals with your name. Hotel and city transfers too.",
+        "note": "",
+        "quote": "",
+        "highlight": false,
+        "price": "",
+        "from": false,
+        "image": "/images/stock/airport-sai.jpg",
+        "message": "Hi Mr Night, I need an airport pick-up / transfer (SAI). Flight number: ___ Date: ___ People: ___ Hotel: ___"
+      },
+      {
+        "title": "Mr Night's favourite: 2 days, temples + waterfall",
+        "kicker": "⭐ 2 days",
+        "text": "Day 1: Angkor Wat and the main temples. Day 2: the waterfall. I can also pick you up at the airport and take you to your hotel.",
+        "note": "I'm your driver, not your guide; a licensed guide on request.",
+        "quote": "My favourite: one day temples, the next day the waterfall. I pick you up at the airport too.",
+        "highlight": true,
+        "price": "",
+        "from": false,
+        "image": "/images/stock/banteay-srei.jpg",
+        "message": "Hi Mr Night, I would like your favourite 2-day trip: temples + waterfall, with airport pick-up. Dates: ___ People: ___ Hotel: ___"
+      }
+    ],
+    "list": [
+      {
+        "name": "Airport SAI ↔ hotel",
+        "details": "About 50 km, about 1 hour · name sign included",
+        "price": "",
+        "message": "Hi Mr Night, I need an airport transfer between SAI and my hotel. Flight: ___ Date: ___ People: ___"
+      },
+      {
+        "name": "City transfer",
+        "details": "Hotel, restaurant, Phare circus, bus station",
+        "price": "",
+        "message": "Hi Mr Night, I need a city transfer. From: ___ To: ___ Time: ___"
+      },
+      {
+        "name": "Small circuit",
+        "details": "Angkor Wat, Angkor Thom, Bayon, Ta Prohm",
+        "price": "",
+        "message": "Hi Mr Night, I would like the Small circuit in your van. Date: ___ People: ___"
+      },
+      {
+        "name": "Sunrise + small circuit",
+        "details": "Early morning start",
+        "price": "",
+        "message": "Hi Mr Night, I would like Sunrise + Small circuit. Date: ___ People: ___"
+      },
+      {
+        "name": "Grand circuit",
+        "details": "Preah Khan, Neak Pean, Ta Som, East Mebon, Pre Rup",
+        "price": "",
+        "message": "Hi Mr Night, I would like the Grand circuit. Date: ___ People: ___"
+      },
+      {
+        "name": "Banteay Srei and far temples",
+        "details": "Banteay Srei, Banteay Samre (about 40 km)",
+        "price": "",
+        "message": "Hi Mr Night, I would like Banteay Srei and the far temples. Date: ___ People: ___"
+      },
+      {
+        "name": "Kulen Mountain or Beng Mealea",
+        "details": "Full day out of town",
+        "price": "",
+        "message": "Hi Mr Night, I would like a day trip to Kulen Mountain / Beng Mealea. Date: ___ People: ___"
+      },
+      {
+        "name": "Tonle Sap floating village",
+        "details": "Half day · boat ticket not included",
+        "price": "",
+        "message": "Hi Mr Night, I would like to visit Tonle Sap floating village. Date: ___ People: ___"
+      }
+    ],
+    "included": "Van, driver, fuel, cold water, cold towels.",
+    "not_included": "Angkor Pass, guide, boat and entry tickets."
+  },
+  "guide": {
+    "show": true,
+    "heading": "I am your driver, not your guide.",
+    "text": "Only licensed guides can guide you inside the temples. If you want the full story, I can book a licensed English-speaking guide for you.",
+    "price": ""
+  },
+  "van": {
+    "heading": "Travel in comfort, not in a hot taxi.",
+    "text": "Siem Reap is hot, and the airport is an hour away. My Toyota Alphard is quiet, cool and clean, with big reclining massage seats.",
+    "button": "Book the van"
+  },
+  "about": {
+    "heading": "Hello, I'm Mr Night.",
+    "subheading": "Your driver, and your friend, in Siem Reap.",
+    "story": [
+      "I am a local driver in Siem Reap. I drive my own Toyota Alphard, a quiet luxury van with reclining massage seats.",
+      "I pick up guests at the new SAI airport, drive them to the temples and around town, and I always have cold water and cold towels ready.",
+      "Message me on WhatsApp with your dates and your hotel. I will reply with a clear price for the whole van."
+    ],
+    "quote": "",
+    "why": [
+      "Local driver, and you message me directly.",
+      "A private luxury van with reclining massage seats.",
+      "A fair price for the whole van, told to you before the trip.",
+      "Cold water and cold towels after every stop."
+    ],
+    "driving_since": "",
+    "languages": "",
+    "licence": ""
+  },
+  "bangkok": {
+    "show": true,
+    "eyebrow": "Coming from Bangkok?",
+    "heading": "I can help you arrange it.",
+    "text": "There are 3-day and 4-day trips from Bangkok to Siem Reap with bus, hotel and an English-speaking guide. Message me and I can help you arrange one.",
+    "price_3d": "",
+    "price_4d": "",
+    "days_3d": [
+      {
+        "title": "Bangkok → Poipet → Siem Reap",
+        "text": "Early bus from Bangkok and border crossing at Poipet. Hotel check-in, free evening on Pub Street."
+      },
+      {
+        "title": "Angkor temples with a guide",
+        "text": "Angkor Wat, Angkor Thom, Bayon and Ta Prohm."
+      },
+      {
+        "title": "Old Market → Bangkok",
+        "text": "Shopping, then back to Bangkok in the evening."
+      }
+    ],
+    "days_4d": [
+      {
+        "title": "Bangkok → Poipet → Siem Reap",
+        "text": "Bus, border crossing, hotel, free evening."
+      },
+      {
+        "title": "Angkor temples with a guide",
+        "text": "Angkor Wat, Angkor Thom, Bayon, Ta Prohm, Wat Thmey memorial, Artisans d'Angkor."
+      },
+      {
+        "title": "Phnom Kulen National Park",
+        "text": "Waterfall, River of a Thousand Lingas, Reclining Buddha, Old Market."
+      },
+      {
+        "title": "Siem Reap → Bangkok",
+        "text": "Back to Bangkok in the evening."
+      }
+    ]
+  },
+  "places": [
+    {
+      "name": "Pub Street at night",
+      "image": "/images/stock/city-pubstreet.jpg"
+    },
+    {
+      "name": "Apsara dance show",
+      "image": "/images/stock/apsara.jpg"
+    },
+    {
+      "name": "Tonle Sap lake",
+      "image": "/images/stock/tonle-sap.jpg"
+    },
+    {
+      "name": "Old Market",
+      "image": "/images/stock/old-market.jpg"
+    },
+    {
+      "name": "Bayon faces",
+      "image": "/images/stock/bayon-bw.jpg"
+    }
+  ],
+  "faq": [
+    {
+      "q": "How far is the new airport?",
+      "a": "Siem Reap Angkor International Airport (SAI) is about 50 km from town, about 1 hour by van. Send me your flight number and I will watch for delays."
+    },
+    {
+      "q": "What is the van like?",
+      "a": "A private luxury van (Toyota Alphard) with reclining massage seats, strong air-con, cold water and cold towels."
+    },
+    {
+      "q": "Is the price per person?",
+      "a": "No. Transfer and tour prices are for the whole van."
+    },
+    {
+      "q": "Do you guide inside the temples?",
+      "a": "No. I am a driver. Only licensed guides can guide inside the temples, and I can book one for you."
+    },
+    {
+      "q": "How do I book?",
+      "a": "Send me a WhatsApp message with your dates, number of people and hotel. I will reply with the price."
+    },
+    {
+      "q": "Do I need an Angkor Pass?",
+      "a": "Yes. Buy it at the official ticket office or at angkorenterprise.gov.kh. It is not included in the van price."
+    },
+    {
+      "q": "I'm in Bangkok. Can I come by land?",
+      "a": "Please message me to check the current border status first. You can also fly from Bangkok to Siem Reap (about 1 hour) and I will meet you at SAI airport."
+    }
+  ],
+  "contact": {
+    "heading": "Ready to go? Message Mr Night.",
+    "text": "Tell me your dates, how many people, and your hotel. I will reply with a clear price for the whole van.",
+    "message": "Hi Mr Night, I found your website. Dates: ___ People: ___ Hotel: ___ Trip: ___"
+  },
+  "widget": {
+    "greeting": "Hello! 👋 I'm Mr Night, your private luxury van driver in Siem Reap. Tell me your dates, how many people and your hotel. I will reply on WhatsApp.",
+    "message": "Hi Mr Night, I found your website. I would like to ask about a trip.",
+    "button_text": "Open chat"
+  },
+  "reviews": {
+    "tripadvisor": {
+      "show": false,
+      "url": "",
+      "widget_location_id": "",
+      "rating": "",
+      "count": ""
+    },
+    "google": {
+      "show": false,
+      "url": "",
+      "rating": "",
+      "count": ""
+    },
+    "getyourguide": {
+      "show": false,
+      "url": "",
+      "rating": "",
+      "count": ""
+    },
+    "booking": {
+      "show": false,
+      "url": "",
+      "rating": "",
+      "count": ""
+    }
+  },
+  "reviewsWall": {
+    "show": false,
+    "items": []
+  },
+  "award": {
+    "show": false,
+    "title": "",
+    "url": ""
+  }
+}

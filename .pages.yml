@@ -1,0 +1,255 @@
+# Pages CMS config (https://pagescms.org). Mr Night edits ONE file, content/site.json, from his phone.
+# Based on Nico's v3 config, extended to cover every field on the site.
+media:
+  input: images
+  output: /images
+  categories: [image]
+  rename: safe
+
+content:
+  - name: site
+    label: My website
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - { name: name, label: "My name on the site", type: string }
+      - { name: tagline, label: "Short line under my name", type: string }
+      - { name: whatsapp, label: "WhatsApp number (numbers only, with 855, no + or spaces)", type: string, pattern: { regex: "^[0-9]{8,15}$", message: "Numbers only, for example 85517843878" } }
+      - { name: phone_display, label: "Phone number as people see it", type: string }
+      - { name: email, label: "Email (leave empty to hide)", type: string }
+      - { name: google_maps_url, label: "Link to my Google Maps page (https://…)", type: string }
+      - { name: facebook_url, label: "Link to my Facebook page (https://…)", type: string }
+      - { name: reply_time, label: "I usually reply in… (e.g. 1 hour). Empty = hidden", type: string }
+      - { name: currency, label: "Money sign before prices", type: string }
+      - { name: last_updated, label: "Last updated (e.g. Dec 2026)", type: string }
+      - name: seo
+        label: "Google search text"
+        type: object
+        fields:
+          - { name: title, label: "Page title", type: string }
+          - { name: description, label: "Short description", type: text }
+      - name: vehicle
+        label: "My van"
+        type: object
+        fields:
+          - { name: model, label: "Van model", type: string }
+          - { name: seats, label: "Number of guests (empty = hidden)", type: string }
+          - { name: massage_seats, label: "Which seats have massage (empty = hidden)", type: string }
+      - name: photos
+        label: "My photos (empty = grey box)"
+        type: object
+        fields:
+          - { name: night, label: "Photo of me", type: image }
+          - { name: van_outside, label: "My van – outside", type: image }
+          - { name: van_inside, label: "My van – inside", type: image }
+          - { name: van_seats, label: "My van – massage seats", type: image }
+          - { name: guests, label: "Me with guests (ask them first)", type: image }
+      - name: hero
+        label: "Top of the page"
+        type: object
+        fields:
+          - { name: eyebrow, label: "Small line above the title", type: string }
+          - { name: title, label: "Big title", type: string }
+          - { name: highlight, label: "Words in the title to colour", type: string }
+          - { name: text, label: "Text under the title", type: text }
+          - { name: button, label: "Button text", type: string }
+          - { name: message, label: "WhatsApp message for the button", type: text }
+      - name: book_now_pay_later
+        label: "Book now, pay later"
+        type: object
+        fields:
+          - { name: show, label: "Show 'Book now, pay later'", type: boolean }
+          - { name: confirmed, label: "I confirm I offer this (must be on to show)", type: boolean }
+          - { name: text, label: "Short text", type: string }
+      - name: border
+        label: "Thai border (Poipet)"
+        type: object
+        fields:
+          - { name: show, label: "Show the border message", type: boolean }
+          - { name: date, label: "Date of this update", type: string }
+          - { name: note, label: "Border message", type: text }
+          - { name: fly_note, label: "Flying from Bangkok text", type: text }
+      - name: trips
+        label: "Trips and prices (empty price = 'Message me for price')"
+        type: object
+        fields:
+          - { name: featured_eyebrow, label: "Featured trips – small line", type: string }
+          - { name: featured_heading, label: "Featured trips – title", type: string }
+          - { name: featured_intro, label: "Featured trips – text", type: text }
+          - name: featured
+            label: "Featured trip cards"
+            type: object
+            list:
+              collapsible: { collapsed: true, summary: "{title}" }
+            fields:
+              - { name: title, label: "Trip name", type: string }
+              - { name: kicker, label: "Small label on the photo", type: string }
+              - { name: text, label: "Text", type: text }
+              - { name: note, label: "Extra note (optional)", type: string }
+              - { name: quote, label: "My own words (optional)", type: text }
+              - { name: highlight, label: "Big highlight card", type: boolean }
+              - { name: price, label: "Price per van (numbers only, empty = hidden)", type: string }
+              - { name: from, label: "Show 'from' before the price", type: boolean }
+              - { name: image, label: "Photo", type: image }
+              - { name: message, label: "WhatsApp message", type: text }
+          - { name: heading, label: "Price table – title", type: string }
+          - { name: intro, label: "Price table – text", type: text }
+          - name: list
+            label: "Price table rows"
+            type: object
+            list:
+              collapsible: { collapsed: true, summary: "{name}" }
+            fields:
+              - { name: name, label: "Trip", type: string }
+              - { name: details, label: "Details", type: string }
+              - { name: price, label: "Price per van (numbers only, empty = hidden)", type: string }
+              - { name: message, label: "WhatsApp message", type: text }
+          - { name: included, label: "Included", type: string }
+          - { name: not_included, label: "Not included", type: string }
+      - name: guide
+        label: "Driver, not guide"
+        type: object
+        fields:
+          - { name: show, label: "Show this box", type: boolean }
+          - { name: heading, label: "Title", type: string }
+          - { name: text, label: "Text", type: text }
+          - { name: price, label: "Guide price per day (empty = hidden)", type: string }
+      - name: van
+        label: "The van section"
+        type: object
+        fields:
+          - { name: heading, label: "Title", type: string }
+          - { name: text, label: "Text", type: text }
+          - { name: button, label: "Button text", type: string }
+      - name: about
+        label: "About me"
+        type: object
+        fields:
+          - { name: heading, label: "Title", type: string }
+          - { name: subheading, label: "Second line", type: string }
+          - { name: story, label: "My story (one box = one paragraph)", type: text, list: true }
+          - { name: quote, label: "My own words (empty = hidden)", type: text }
+          - { name: why, label: "Why travel with me", type: string, list: true }
+          - { name: driving_since, label: "Driving since (year, empty = hidden)", type: string }
+          - { name: languages, label: "Languages (empty = hidden)", type: string }
+          - { name: licence, label: "Licence (empty = hidden)", type: string }
+      - name: bangkok
+        label: "Coming from Bangkok"
+        type: object
+        fields:
+          - { name: show, label: "Show this section", type: boolean }
+          - { name: eyebrow, label: "Small line", type: string }
+          - { name: heading, label: "Title", type: string }
+          - { name: text, label: "Text", type: text }
+          - { name: price_3d, label: "3-day price per person (empty = hidden)", type: string }
+          - { name: price_4d, label: "4-day price per person (empty = hidden)", type: string }
+          - name: days_3d
+            label: "3-day plan"
+            type: object
+            list: true
+            fields:
+              - { name: title, label: "Day title", type: string }
+              - { name: text, label: "Day text", type: text }
+          - name: days_4d
+            label: "4-day plan"
+            type: object
+            list: true
+            fields:
+              - { name: title, label: "Day title", type: string }
+              - { name: text, label: "Day text", type: text }
+      - name: places
+        label: "Places I can take you"
+        type: object
+        list:
+          collapsible: { collapsed: true, summary: "{name}" }
+        fields:
+          - { name: name, label: "Place", type: string }
+          - { name: image, label: "Photo", type: image }
+      - name: faq
+        label: "Questions and answers"
+        type: object
+        list:
+          collapsible: { collapsed: true, summary: "{q}" }
+        fields:
+          - { name: q, label: "Question", type: string }
+          - { name: a, label: "Answer", type: text }
+      - name: contact
+        label: "Contact box"
+        type: object
+        fields:
+          - { name: heading, label: "Title", type: string }
+          - { name: text, label: "Text", type: text }
+          - { name: message, label: "WhatsApp message", type: text }
+      - name: widget
+        label: "WhatsApp chat bubble"
+        type: object
+        fields:
+          - { name: greeting, label: "Greeting in the bubble", type: text }
+          - { name: message, label: "WhatsApp message", type: text }
+          - { name: button_text, label: "Button text", type: string }
+      - name: reviews
+        label: "Review badges (switch on only when you have real reviews)"
+        type: object
+        fields:
+          - name: tripadvisor
+            label: TripAdvisor
+            type: object
+            fields:
+              - { name: show, label: "Show TripAdvisor", type: boolean }
+              - { name: url, label: "Link to my TripAdvisor page (https://…)", type: string }
+              - { name: widget_location_id, label: "TripAdvisor location ID for the free live widget (numbers only, optional)", type: string }
+              - { name: rating, label: "My rating (only used if no widget)", type: string }
+              - { name: count, label: "Number of reviews (only used if no widget)", type: string }
+          - name: google
+            label: Google
+            type: object
+            fields:
+              - { name: show, label: "Show Google", type: boolean }
+              - { name: url, label: "Link to my Google page (https://…)", type: string }
+              - { name: rating, label: "My Google rating, typed by me (e.g. 4.9)", type: string }
+              - { name: count, label: "Number of Google reviews (e.g. 12)", type: string }
+          - name: getyourguide
+            label: GetYourGuide
+            type: object
+            fields:
+              - { name: show, label: "Show GetYourGuide", type: boolean }
+              - { name: url, label: "Link to my page (https://…)", type: string }
+              - { name: rating, label: "My rating", type: string }
+              - { name: count, label: "Number of reviews", type: string }
+          - name: booking
+            label: Booking.com
+            type: object
+            fields:
+              - { name: show, label: "Show Booking.com", type: boolean }
+              - { name: url, label: "Link to my page (https://…)", type: string }
+              - { name: rating, label: "My rating (out of 10)", type: string }
+              - { name: count, label: "Number of reviews", type: string }
+      - name: reviewsWall
+        label: "Reviews on my website"
+        type: object
+        fields:
+          - { name: show, label: "Show reviews section", type: boolean }
+          - name: items
+            label: "Reviews (copy real reviews only, never change them)"
+            type: object
+            list:
+              collapsible: { collapsed: true, summary: "{name}" }
+            fields:
+              - { name: name, label: "Guest name", type: string }
+              - { name: country, label: "Country", type: string }
+              - { name: date, label: "Month and year", type: string }
+              - name: source
+                label: "From"
+                type: select
+                options:
+                  values: [tripadvisor, google, getyourguide, booking]
+              - { name: url, label: "Link to the review (https://…)", type: string }
+              - { name: text, label: "Review text (copy exactly)", type: text }
+      - name: award
+        label: "Award (only if you really won it)"
+        type: object
+        fields:
+          - { name: show, label: "Show award", type: boolean }
+          - { name: title, label: "Award name and year", type: string }
+          - { name: url, label: "Link to proof (https://…)", type: string }

@@ -214,7 +214,6 @@ content:
               - { name: name, label: "Place", type: string }
               - { name: text, label: "One-line description (links: [text](https://...))", type: text }
               - { name: image, label: "Photo (use your own if you have one)", type: image }
-              - { name: stock, label: "This is a stock photo (shows a 'Stock photo' label – add the credit to credits.html)", type: boolean }
       - { name: places_eyebrow, label: "Photo gallery – small line", type: string }
       - { name: places_heading, label: "Photo gallery – title", type: string }
       - name: places

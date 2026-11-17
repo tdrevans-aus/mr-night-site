@@ -275,62 +275,62 @@
       {
         "name": "Angkor Wat",
         "text": "The biggest temple in the world. Come for sunrise over the lotus ponds, or later in the day when it is quieter.",
-        "image": "/images/night/angkor-wat-guest.jpg",
-        "stock": false
+        "image": "/images/night/angkor-wat-guest.jpg"
       },
       {
         "name": "Angkor Thom and Bayon",
         "text": "The old royal city and the Bayon temple, with more than 200 giant stone faces.",
-        "image": "/images/night/bayon-guests.jpg",
-        "stock": false
+        "image": "/images/night/bayon-guests.jpg"
       },
       {
         "name": "Ta Prohm",
         "text": "The jungle temple, with huge tree roots growing over the walls.",
-        "image": "/images/night/ta-prohm-roots.jpg",
-        "stock": false
+        "image": "/images/night/ta-prohm-roots.jpg"
       },
       {
         "name": "Banteay Srei",
         "text": "The small pink temple with the finest carvings, about 40 minutes from town.",
-        "image": "/images/night/banteay-srei-guests.jpg",
-        "stock": false
+        "image": "/images/night/banteay-srei-guests.jpg"
       },
       {
         "name": "Kulen Mountain waterfall (Phnom Kulen)",
         "text": "The holy mountain: swim at the waterfall and see the river carvings and the big reclining Buddha.",
-        "image": "/images/stock/kulen-buddha-temple.jpg",
-        "stock": true
+        "image": "/images/stock/kulen-main-waterfall.jpg"
       },
       {
         "name": "Beng Mealea",
         "text": "A wild jungle temple, half fallen down and covered in trees, about 1.5 hours from Siem Reap.",
-        "image": "/images/stock/beng-mealea.jpg",
-        "stock": true
+        "image": "/images/stock/beng-mealea.jpg"
       },
       {
         "name": "Tonle Sap floating village",
         "text": "Houses on stilts and boats on the biggest lake in Southeast Asia.",
-        "image": "/images/stock/tonle-sap.jpg",
-        "stock": true
+        "image": "/images/stock/tonle-sap-village.jpg"
+      },
+      {
+        "name": "Butterfly Paradise",
+        "text": "A tropical garden full of butterflies, with waterfalls, koi ponds and a plant-based café. Learn how a caterpillar becomes a butterfly. [butterflyparadise.net](https://www.butterflyparadise.net/)",
+        "image": "/images/places/butterfly-paradise.jpg"
+      },
+      {
+        "name": "APOPO HeroRATs (landmine rats)",
+        "text": "Meet the giant rats trained to sniff out landmines. Watch a live demonstration and learn how Cambodia clears its minefields. A short drive from town, easy to add after Angkor Wat.",
+        "image": "/images/places/apopo-herorat.jpg"
       },
       {
         "name": "Golf",
         "text": "Siem Reap has 3 championship courses: Angkor Golf Resort (a Nick Faldo design, about 10 minutes from town), Phokeethra Country Club (an Asian Tour venue, near Puok) and Siem Reap Booyoung Country Club (near Bakong). I drive you and your clubs there and back.",
-        "image": "/images/golf/golf-tee.jpg",
-        "stock": false
+        "image": "/images/golf/golf-tee.jpg"
       },
       {
         "name": "Angkor Eye",
         "text": "An 85 m Ferris wheel with air-conditioned cabins. Best at sunset.",
-        "image": "/images/stock/angkor-eye.jpg",
-        "stock": true
+        "image": "/images/stock/angkor-eye.jpg"
       },
       {
         "name": "Pub Street and the Night Market",
         "text": "Food, drinks and shopping in the evening. I drop you off and pick you up.",
-        "image": "/images/stock/city-pubstreet.jpg",
-        "stock": true
+        "image": "/images/stock/city-pubstreet.jpg"
       }
     ]
   },
@@ -531,6 +531,14 @@
     {
       "image": "angkor-wat-selfie.jpg",
       "position": "40% 70%"
+    },
+    {
+      "image": "butterfly-paradise.jpg",
+      "position": "50% 62%"
+    },
+    {
+      "image": "apopo-herorat.jpg",
+      "position": "50% 58%"
     }
   ]
 }

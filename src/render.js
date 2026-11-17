@@ -368,7 +368,7 @@ function render(raw, opts) {
     dItems.map(function (x) {
       var img = safeImg(x.image), nm = str(x.name);
       var msg = (str(D.message) || 'Hi Mr Night, I would like to visit {place}. Can you help me plan it?').replace(/\{place\}/g, nm);
-      return '<article class="dcard">' + (img ? '<div class="ph has-img">' + pic(img, nm, '(max-width: 600px) 92vw, (max-width: 960px) 46vw, 380px') + (x.stock ? '<span class="stock">Stock photo</span>' : '') + '</div>' : '') +
+      return '<article class="dcard">' + (img ? '<div class="ph has-img">' + pic(img, nm, '(max-width: 600px) 92vw, (max-width: 960px) 46vw, 380px') + '</div>' : '') +
         '<div class="body"><h3>' + esc(nm) + '</h3>' + (has(x.text) ? '<p>' + rich(x.text) + '</p>' : '') +
         waBtn('btn btn-wa btn-sm dask', msg, 'Ask<span class="sr"> about ' + esc(nm) + '</span>') + '</div></article>';
     }).join('') + '</div><p class="dnote"><a href="/credits.html">Photo credits</a></p></div></section>\n';

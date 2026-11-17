@@ -165,12 +165,13 @@
     "button": "Book the van"
   },
   "about": {
-    "heading": "Hello, I'm Mr Night.",
-    "subheading": "Your driver, and your friend, in Siem Reap.",
+    "heading": "Mr Night [full name]",
+    "subheading": "Founder and Private Driver · 15 years' experience as a guide in Siem Reap · Speaks English, Thai and Khmer",
     "story": [
-      "I am a local driver in Siem Reap. I drive my own Toyota Alphard, a quiet luxury van with reclining massage seats.",
-      "I pick up guests at the new SAI airport, drive them to the temples and around town, and I always have cold water and cold towels ready.",
-      "Message me on WhatsApp with your dates and your hotel. I will reply with a clear price for the whole van."
+      "My name is Night, but my guests call me Mr Night. I was born and grew up in Cambodia, and my family survived the Khmer Rouge years. As a young man I trained as a Buddhist monk, and it was my dream to become one. But my father died young, so I left the monastery to work and take care of my mother.",
+      "That is how I started in tourism. For 15 years I have worked as a guide in Siem Reap, sharing the temples of Angkor, our villages and our Khmer culture with visitors from all over the world. Today my mother still lives with me, and I am a proud father of two young boys. Everything I earn supports my family.",
+      "Now I drive my own Toyota Alphard, with reclining massage seats, cool air-con, cold water and cold towels, so you can relax between the temples. I know Siem Reap like my home, because it is my home. When you travel with me, you are not a customer, you are my guest.",
+      "Message me on WhatsApp any time. I look forward to showing you my Cambodia."
     ],
     "quote": "",
     "why": [
@@ -180,7 +181,8 @@
       "Cold water and cold towels after every stop."
     ],
     "driving_since": "",
-    "languages": "",
+    "experience": "15 years",
+    "languages": "English, Thai, Khmer",
     "licence": ""
   },
   "bangkok": {

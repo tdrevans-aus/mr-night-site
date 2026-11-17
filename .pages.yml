@@ -132,6 +132,7 @@ content:
           - { name: quote, label: "My own words (empty = hidden)", type: text }
           - { name: why, label: "Why travel with me", type: string, list: true }
           - { name: driving_since, label: "Driving since (year, empty = hidden)", type: string }
+          - { name: experience, label: "Experience, e.g. 15 years (empty = hidden)", type: string }
           - { name: languages, label: "Languages (empty = hidden)", type: string }
           - { name: licence, label: "Licence (empty = hidden)", type: string }
       - name: bangkok

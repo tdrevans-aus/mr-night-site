@@ -178,6 +178,7 @@
     $('#why').innerHTML = why.map(function (w) { return '<li>' + esc(w) + '</li>'; }).join('');
     var band = [];
     if (has(A.driving_since)) band.push(['Driving since', A.driving_since, '']);
+    if (has(A.experience)) band.push(['Experience', A.experience, '']);
     if (has(A.languages)) band.push(['Languages', A.languages, '']);
     if (has(A.licence)) band.push(['Licence', A.licence, '']);
     band.push(['My van', model, seats ? seats + ' seats' : 'Reclining massage seats']);

@@ -99,11 +99,9 @@ Do not create accounts for him without his say. He should own every account, wit
 
 ## Things still to get from Mr Night
 
-- Photos still missing: the Alphard inside and the massage seats (his portrait, the van outside and a guest photo are in `images/night/`). Confirm the guests in `guests-angkor-wat.jpg` are happy to be shown.
+- Confirm the guests in `guests-angkor-wat.jpg` are happy to be shown. (Photos of the van inside and the massage seats are done: `images/night/van-seats.jpg`.)
 - Prices for every trip (per van), and Bangkok trip prices if he sells them.
 - Number of guests the van takes, and which seats have massage.
-- The waterfall trip name (Phnom Kulen?).
-- The year he started driving.
 - His link with the Bangkok tour company, and whether he can advertise its trips.
 - Reply time, payment methods, whether he offers "book now, pay later", child seats.
 - Google Maps / TripAdvisor / Facebook links, if any.

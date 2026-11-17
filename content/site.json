@@ -316,12 +316,12 @@
       {
         "name": "Golf",
         "text": "Siem Reap has 3 championship courses: Angkor Golf Resort (a Nick Faldo design, about 10 minutes from town), Phokeethra Country Club (an Asian Tour venue, near Puok) and Siem Reap Booyoung Country Club (near Bakong). I drive you and your clubs there and back.",
-        "image": "/images/stock/golf-course.jpg",
-        "stock": true
+        "image": "/images/golf/golf-tee.jpg",
+        "stock": false
       },
       {
         "name": "Angkor Eye",
-        "text": "An 85 m Ferris wheel with air-conditioned cabins. Open 3 to 8 pm, best at sunset.",
+        "text": "An 85 m Ferris wheel with air-conditioned cabins. Best at sunset.",
         "image": "/images/stock/angkor-eye.jpg",
         "stock": true
       },
@@ -399,6 +399,10 @@
     {
       "name": "Me at Angkor Wat",
       "image": "/images/night/angkor-wat-selfie.jpg"
+    },
+    {
+      "name": "Out on the golf course",
+      "image": "/images/golf/golf-cart.jpg"
     }
   ],
   "faq": [

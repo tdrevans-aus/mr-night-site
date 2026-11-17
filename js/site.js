@@ -45,3 +45,46 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
 })();
+
+/* Translate menu: loads Google's free Website Translator only when the header holds #tr.
+   If the script is blocked or fails, the menu stays hidden and nothing else on the page changes. */
+(function () {
+  'use strict';
+  var tr = document.getElementById('tr');
+  if (!tr) return;
+  var langs = (tr.getAttribute('data-langs') || '').replace(/[^A-Za-z,-]/g, '');
+  if (!langs) return;
+  var NAMES = { en: 'EN', 'zh-CN': '中文', ko: '한국어', fr: 'FR', ja: '日本語' };
+  window.mnTranslateInit = function () {
+    try {
+      if (!window.google || !google.translate || !google.translate.TranslateElement) return;
+      new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,' + langs, autoDisplay: false }, 'google_translate_element');
+      tr.hidden = false;
+      var lbl = tr.querySelector('.tr-lbl');
+      var restore = function () {
+        var host = location.hostname, parts = host.split('.');
+        var kill = function (d) { document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + (d ? '; domain=' + d : ''); };
+        kill(''); kill(host); kill('.' + host); if (parts.length > 2) kill('.' + parts.slice(-2).join('.'));
+        location.reload();
+      };
+      var wire = function () {
+        var sel = tr.querySelector('select.goog-te-combo');
+        if (!sel) return setTimeout(wire, 300);
+        sel.setAttribute('aria-label', 'Translate this page');
+        var fix = function () { var o = sel.options[0]; if (o && !o.value && o.textContent !== 'English') o.textContent = 'English'; };
+        fix(); if (window.MutationObserver) new MutationObserver(fix).observe(sel, { childList: true, subtree: true, characterData: true });
+        var m = document.cookie.match(/(?:^|;\s*)googtrans=\/en\/([^;]+)/); if (m) lbl.textContent = NAMES[decodeURIComponent(m[1])] || m[1].toUpperCase();
+        sel.addEventListener('change', function () {
+          if (!sel.value) return restore();
+          lbl.textContent = NAMES[sel.value] || sel.value.toUpperCase();
+        });
+      };
+      wire();
+    } catch (e) { tr.hidden = true; }
+  };
+  var s = document.createElement('script');
+  s.src = 'https://translate.google.com/translate_a/element.js?cb=mnTranslateInit';
+  s.async = true;
+  s.onerror = function () { tr.hidden = true; };
+  document.head.appendChild(s);
+})();

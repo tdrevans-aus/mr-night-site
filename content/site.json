@@ -330,6 +330,11 @@
     "message": "Hi Mr Night, I found your website. I would like to ask about a trip.",
     "button_text": "Open chat"
   },
+  "translate": {
+    "show": true,
+    "languages": "zh-CN,ko,fr,ja",
+    "label": "Translate this page"
+  },
   "reviews": {
     "tripadvisor": {
       "show": false,

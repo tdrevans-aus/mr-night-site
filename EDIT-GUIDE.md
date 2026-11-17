@@ -71,6 +71,17 @@ Website addresses that start with `https://`, names like `example.com` and email
 
 ---
 
+## 6. The translate button
+
+The round globe button at the top lets visitors read your site in Chinese, Korean, French or Japanese (Google Translate does this automatically).
+
+- To hide it: tap **Translate menu** and switch off **Show the translate menu**.
+- To change the languages: change **Languages**. Use codes with commas, for example `zh-CN,ko,fr,ja`.
+
+Your name, phone number and WhatsApp messages stay the same in every language.
+
+---
+
 ## Good to know
 
 - **Reviews:** switch them on only when you have **real** reviews. Never write a review yourself. Paste the link to your real page (it starts with `https://`).

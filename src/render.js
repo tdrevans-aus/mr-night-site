@@ -128,6 +128,14 @@ function render(raw, opts) {
     if (!src) return '';
     return '<div class="' + (cls ? cls + ' ' : '') + 'ph has-img">' + pic(src, PHOTO_ALT[key], sizes) + (extra || '') + '</div>';
   }
+  /* Translate menu (Google Website Translator). Hidden until Google's script loads (site.js), so no-JS and blocked-script visitors see nothing. */
+  var TRN = C.translate || {};
+  var trLangs = str(TRN.languages).replace(/\s+/g, '');
+  if (!/^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?(,[A-Za-z]{2,3}(-[A-Za-z]{2,4})?)*$/.test(trLangs)) trLangs = '';
+  function translateMenu() {
+    if (TRN.show !== true || !trLangs) return '';
+    return '<div class="tr notranslate" id="tr" translate="no" hidden data-langs="' + esc(trLangs) + '"><svg class="tr-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.8 12h18.4M12 2.8c2.6 2.6 3.9 5.6 3.9 9.2s-1.3 6.6-3.9 9.2M12 2.8C9.4 5.4 8.1 8.4 8.1 12s1.3 6.6 3.9 9.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="tr-lbl">EN</span><span class="sr">' + esc(str(TRN.label) || 'Translate this page') + '</span><div id="google_translate_element"></div></div>';
+  }
   var headshot = safeImg(P.headshot) || safeImg(P.night);
   function avatar(cls, sizes) { return headshot ? '<span class="' + cls + '">' + pic(headshot, name, sizes || '96px', 'avimg') + '</span>' : ''; }
   function price(p, o) {
@@ -163,7 +171,7 @@ function render(raw, opts) {
     }).replace(/</g, '\\u003c') + '</script>\n</head>\n';
 
   var brand = function (style) {
-    return '<a class="brand" href="#top"' + (style ? ' style="' + style + '"' : '') + '><span class="moon" aria-hidden="true"></span><span><b>' + brandHtml(brandName) + '</b>' +
+    return '<a class="brand" href="#top"' + (style ? ' style="' + style + '"' : '') + '><span class="moon" aria-hidden="true"></span><span><b class="notranslate" translate="no">' + brandHtml(brandName) + '</b>' +
       (has(C.tagline) ? '<small>' + esc(C.tagline) + '</small>' : '') + '</span></a>';
   };
   var K = C.bangkok || {};
@@ -180,7 +188,7 @@ function render(raw, opts) {
     '<header class="top"><div class="wrap">' + brand() +
     '<nav class="nav" aria-label="Main"><a href="#trips">Trips</a><a href="#transfers">Prices</a><a href="#van">The van</a><a href="#about">About me</a>' +
     (showFly ? '<a href="#flying-in">Flying in</a>' : '') + (showBkk ? '<a href="#bangkok">From Bangkok</a>' : '') + '<a href="#faq">FAQ</a>' +
-    waBtn('btn btn-wa btn-sm', T('widget.message'), '<span>WhatsApp</span>') + '</nav></div></header>\n<main id="main">\n';
+    translateMenu() + waBtn('btn btn-wa btn-sm', T('widget.message'), '<span translate="no" class="notranslate">WhatsApp</span>') + '</nav></div></header>\n<main id="main">\n';
 
   out += '<section class="hero" id="top"><div class="bg" role="img" aria-label="Angkor Wat at sunrise"></div><div class="wrap"><div>' +
     (has(H.eyebrow) ? '<p class="eyebrow">' + esc(H.eyebrow) + '</p>' : '') +
@@ -348,7 +356,7 @@ function render(raw, opts) {
   var maps = safeUrl(C.google_maps_url);
   out += '<section class="sec" id="contact" aria-labelledby="contact-h"><div class="wrap"><div class="contact"><div class="bg" aria-hidden="true"></div><div class="in"><div>' +
     avatar('contact-av', '88px') + '<p class="eyebrow">Book your trip</p><h2 id="contact-h">' + esc(T('contact.heading', 'Message ' + name)) + '</h2>' + (has(C.contact && C.contact.text) ? '<p>' + rich(C.contact.text) + '</p>' : '') +
-    waBtn('btn btn-wa', T('contact.message'), 'Message ' + esc(name) + ' on WhatsApp') + '<a class="num" href="tel:+' + num + '">' + esc(phone) + '</a></div>' +
+    waBtn('btn btn-wa', T('contact.message'), 'Message ' + esc(name) + ' on WhatsApp') + '<a class="num notranslate" translate="no" href="tel:+' + num + '">' + esc(phone) + '</a></div>' +
     '<div class="mapcard"><div class="map">' + opts.map + '</div><div class="body"><b>Siem Reap town &amp; SAI airport</b><small>Pick-up from any hotel in Siem Reap.</small>' +
     (maps ? '<a class="btn btn-line btn-sm" href="' + esc(maps) + '" target="_blank" rel="noopener noreferrer"><svg class="wa-ico" aria-hidden="true"><use href="#pin"/></svg>Open in Google Maps</a>' : '') + '</div></div></div></div></div></section>\n</main>\n';
 
@@ -369,7 +377,7 @@ function render(raw, opts) {
 
   out += '<div class="jc" id="jc"><div class="jc-box" role="dialog" aria-label="Chat with ' + esc(name) + ' on WhatsApp" aria-hidden="true">' +
     '<div class="jc-head"><span class="jc-av" aria-hidden="true">' + (headshot ? pic(headshot, '', '48px', 'avimg') : esc(name.replace(/^Mr\.?\s*/i, '').charAt(0).toUpperCase() || 'N')) + '</span>' +
-    '<span><b>' + brandHtml(brandName) + '</b><small>Luxury van \u00b7 ' + (has(C.reply_time) ? 'usually replies in ' + esc(C.reply_time) : 'Siem Reap') + '</small></span>' +
+    '<span><b class="notranslate" translate="no">' + brandHtml(brandName) + '</b><small>Luxury van \u00b7 ' + (has(C.reply_time) ? 'usually replies in ' + esc(C.reply_time) : 'Siem Reap') + '</small></span>' +
     '<button class="jc-close" type="button" aria-label="Close chat">\u00d7</button></div>' +
     '<div class="jc-body"><div class="jc-msg">' + esc(T('widget.greeting', 'Hello! I\'m ' + name + '. Message me on WhatsApp.')) + '</div></div></div>' +
     '<a class="jc-btn" id="jcbtn" href="' + esc(wa(WG.message)) + '" aria-label="Chat with ' + esc(name) + ' on WhatsApp">' +

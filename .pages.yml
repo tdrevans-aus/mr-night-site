@@ -218,6 +218,13 @@ content:
           - { name: heading, label: "Title", type: string }
           - { name: text, label: "Text", type: text }
           - { name: message, label: "WhatsApp message", type: text }
+      - name: translate
+        label: "Translate menu (Google Translate, in the header)"
+        type: object
+        fields:
+          - { name: show, label: "Show the translate menu", type: boolean }
+          - { name: languages, label: "Languages, as codes with commas (zh-CN = Chinese Simplified, ko = Korean, fr = French, ja = Japanese). English stays the default", type: string }
+          - { name: label, label: "Label for screen readers", type: string }
       - name: widget
         label: "WhatsApp chat bubble"
         type: object

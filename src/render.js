@@ -76,6 +76,7 @@ var PHOTO_ALT = {
   van_inside: 'Inside Mr Night\u2019s Toyota Alphard',
   van_seats: 'Comfortable reclining seats in Mr Night\u2019s van',
   van_about: 'Mr Night\u2019s white Toyota Alphard',
+  guests2: 'Mr Night at Angkor Wat',
   guests: 'Mr Night with his guests'
 };
 var NAMES = { tripadvisor: 'TripAdvisor', google: 'Google', getyourguide: 'GetYourGuide', booking: 'Booking.com' };
@@ -118,8 +119,13 @@ function render(raw, opts) {
   }
   /* Responsive picture: WebP srcset when build.js found resized copies (name-800w.webp), plain image otherwise. */
   var variants = opts.variants || function () { return []; };
+  /* Per-photo crop focus from site.json photo_positions: [{ image: "van-outside.jpg", position: "50% 60%" }] */
+  var POS = {};
+  (Array.isArray(C.photo_positions) ? C.photo_positions : []).forEach(function (x) { var k = str(x && x.image).split('/').pop(), v = str(x && x.position); if (k && /^[0-9.]+% [0-9.]+%$/.test(v)) POS[k] = v; });
+  function posOf(src) { return POS[String(src || '').split('/').pop()] || ''; }
   function pic(src, alt, sizes, cls) {
-    var v = variants(src), img = '<img class="' + (cls || 'pimg') + '" src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async">';
+    var pos = posOf(src);
+    var v = variants(src), img = '<img class="' + (cls || 'pimg') + '" src="' + esc(src) + '" alt="' + esc(alt) + '"' + (pos ? ' style="object-position:' + pos + '"' : '') + ' loading="lazy" decoding="async">';
     if (!v.length) return img;
     return '<picture><source type="image/webp" srcset="' + esc(v.map(function (x) { return x.u + ' ' + x.w + 'w'; }).join(', ')) + '" sizes="' + esc(sizes || '100vw') + '">' + img + '</picture>';
   }
@@ -138,6 +144,12 @@ function render(raw, opts) {
     return '<div class="tr notranslate" id="tr" translate="no" hidden data-langs="' + esc(trLangs) + '"><svg class="tr-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.8 12h18.4M12 2.8c2.6 2.6 3.9 5.6 3.9 9.2s-1.3 6.6-3.9 9.2M12 2.8C9.4 5.4 8.1 8.4 8.1 12s1.3 6.6 3.9 9.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="tr-lbl">EN</span><span class="sr">' + esc(str(TRN.label) || 'Translate this page') + '</span><div id="google_translate_element"></div></div>';
   }
   var headshot = safeImg(P.headshot) || safeImg(P.night);
+  /* Photo with its caption BELOW the image (never on top of it). */
+  function fig(key, cls, cap, sizes) {
+    var src = safeImg(P[key]);
+    if (!src) return '';
+    return '<figure class="pf ' + (cls || '') + '"><div class="pf-img">' + pic(src, PHOTO_ALT[key] || name, sizes) + '</div>' + (cap ? '<figcaption>' + cap + '</figcaption>' : '') + '</figure>';
+  }
   function avatar(cls, sizes) { return headshot ? '<span class="' + cls + '">' + pic(headshot, name, sizes || '96px', 'avimg') + '</span>' : ''; }
   function price(p, o) {
     o = o || {};
@@ -164,7 +176,7 @@ function render(raw, opts) {
     '<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:image" content="' + esc(ogImg) + '">\n' +
     '<link rel="icon" href="favicon.svg" type="image/svg+xml">\n<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">\n<link rel="apple-touch-icon" href="apple-touch-icon.png">\n' +
     '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
-    '<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">\n' +
+    '<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Khmer:wght@400;600;700&family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">\n' +
     '<link rel="stylesheet" href="css/style.css">\n' +
     '<script type="application/ld+json">' + JSON.stringify({
       '@context': 'https://schema.org', '@type': 'LocalBusiness', name: brandName, alternateName: [name, str(C.full_name)].filter(function (x, i, a) { return x && x !== brandName && a.indexOf(x) === i; }), url: BASE, image: ogImg, description: desc,
@@ -180,6 +192,16 @@ function render(raw, opts) {
   var FI = C.flying_in || {};
   var showFly = FI.show === true && has(FI.heading);
 
+  /* Hero pair: Night first (bigger), his van second (smaller). Captions sit under the photos, never on them. */
+  function heroPics() {
+    var nm = safeImg(P.night) ? 'night' : (safeImg(P.headshot) ? 'headshot' : '');
+    var vk = safeImg(P.van_outside) ? 'van_outside' : (safeImg(P.van_about) ? 'van_about' : '');
+    if (!nm && !vk) return '';
+    function fig(key, cls, cap, sizes) { var src = safeImg(P[key]); return '<figure class="' + cls + '"><div class="hp-img">' + pic(src, PHOTO_ALT[key] || name, sizes) + '</div><figcaption>' + cap + '</figcaption></figure>'; }
+    return '<div class="hpair' + (nm && vk ? '' : ' hpair-one') + '">' +
+      (nm ? fig(nm, 'hp-main', '<span translate="no" class="notranslate">' + esc(name) + '</span>', '(max-width: 960px) 52vw, 320px') : '') +
+      (vk ? fig(vk, 'hp-van', 'My ' + esc(model) + (capacity ? ' \u00b7 ' + esc(capacity) : ''), '(max-width: 960px) 40vw, 240px') : '') + '</div>';
+  }
   /* ---------- header + hero ---------- */
   var H = C.hero || {};
   var heroTitle = esc(T('hero.title', 'Your private luxury van in Siem Reap.'));
@@ -196,7 +218,7 @@ function render(raw, opts) {
     '<h1>' + heroTitle + '</h1>' + (has(H.text) ? '<p class="lead">' + rich(H.text) + '</p>' : '') +
     '<div class="ctas">' + waBtn('btn btn-wa', H.message, esc(T('hero.button', 'Message ' + name + ' on WhatsApp'))) +
     '<a class="btn btn-ghost" href="#trips">See trips <svg class="wa-ico" aria-hidden="true"><use href="#arrow"/></svg></a></div></div>' +
-    '<div class="vancard vancard-one">' + photo('van_outside', 'a', '<span class="lbl">' + esc(model) + (Capacity ? ' \u00b7 ' + esc(Capacity) : '') + '</span>', '(max-width: 960px) 92vw, 440px') + '</div></div></section>\n';
+    heroPics() + '</div></section>\n';
 
   /* ---------- trust row ---------- */
   var B = C.book_now_pay_later || {};
@@ -217,8 +239,8 @@ function render(raw, opts) {
     var img = safeImg(f.image), hlc = f.highlight === true;
     var ph = img ? '<div class="photo ph has-img">' + pic(img, t, '(max-width: 760px) 92vw, 300px')
       : '<div class="photo nophoto" aria-hidden="true">';
-    ph += (has(f.kicker) ? '<span class="kicker">' + esc(f.kicker) + '</span>' : '') + '</div>';
-    return '<article class="fcard' + (hlc ? ' fcard-hl' : '') + '">' + ph + '<div class="body">' + (hlc ? '<span class="hl-tag">Most loved</span>' : '') +
+    ph += '</div>';
+    return '<article class="fcard' + (hlc ? ' fcard-hl' : '') + '">' + ph + '<div class="body">' + (hlc ? '<span class="hl-tag">Most loved</span>' : '') + (has(f.kicker) ? '<p class="fkick">' + esc(f.kicker) + '</p>' : '') +
       '<h3>' + esc(t) + '</h3>' + (has(f.quote) ? '<blockquote class="fq">\u201c' + esc(f.quote) + '\u201d<cite>\u2014 ' + esc(name) + '</cite></blockquote>' : '') +
       (has(f.text) ? '<p>' + rich(f.text) + '</p>' : '') + (has(f.note) ? '<p class="fnote">' + rich(f.note) + '</p>' : '') + (f.show_luggage === true && luggage ? '<p class="fnote lug-s">' + rich(luggage) + '</p>' : '') +
       '<div class="row">' + price(f.price, { from: f.from === true }) + waBtn('btn btn-wa btn-sm', f.message || ('Hi Mr Night, I would like: ' + t), has(f.price) ? 'Book' : 'Ask') + '</div></div></article>';
@@ -261,7 +283,7 @@ function render(raw, opts) {
 
   /* ---------- the van ---------- */
   var feats = [['Room to stretch out', has(V.massage_seats) ? V.massage_seats : 'Rest between temples'], [Capacity || 'Room for your group', 'Room for bags too'], ['Strong air-con', 'Cool before you get in'], ['Cold water', 'After every stop']];
-  out += '<section class="sec dark" id="van" aria-labelledby="van-h"><div class="wrap comfort"><div class="cgal">' + photo('van_outside', '', '<span class="mcap">My Toyota Alphard at SAI airport</span>', '(max-width: 960px) 92vw, 280px') + photo('van_seats', '', '<span class="mcap">Inside: comfortable reclining seats</span>', '(max-width: 960px) 92vw, 280px') + photo('van_inside', '', '<span class="mcap">Inside the van</span>', '(max-width: 960px) 92vw, 280px') + '</div><div>' +
+  out += '<section class="sec dark" id="van" aria-labelledby="van-h"><div class="wrap comfort"><div class="cgal2">' + fig('van_seats', 'pf-wide', 'Inside: comfortable reclining seats', '(max-width: 960px) 46vw, 270px') + fig('van_inside', 'pf-land', 'Inside the van', '(max-width: 960px) 46vw, 270px') + '</div><div>' +
     '<p class="eyebrow">The van</p><h2 class="van-h" id="van-h">' + esc(T('van.heading', 'Travel in comfort')) + '</h2>' + (has(C.van && C.van.text) ? '<p class="van-p">' + rich(C.van.text) + '</p>' : '') +
     '<ul class="feats">' + feats.map(function (f) { return '<li><b>' + esc(f[0]) + '</b>' + esc(f[1]) + '</li>'; }).join('') + '</ul>' +
     (luggage ? '<p class="lug"><svg class="wa-ico" aria-hidden="true"><use href="#i-van"/></svg>' + rich(luggage) + '</p>' : '') +
@@ -279,12 +301,11 @@ function render(raw, opts) {
   var proof = on.length ? '<div class="bar proofbar" style="grid-template-columns:repeat(' + on.length + ',1fr)">' + badges + '</div>' : '';
   var AW = C.award || {};
   if (AW.show === true && safeUrl(AW.url) && has(AW.title)) proof += '<p class="award"><a href="' + esc(safeUrl(AW.url)) + '" target="_blank" rel="noopener noreferrer"><b>\ud83c\udfc6 ' + esc(AW.title) + '</b></a></p>';
-  var mos = [photo('night', 'm1', '', '(max-width: 960px) 92vw, 380px'), photo(safeImg(P.van_about) ? 'van_about' : 'van_outside', 'm2', '<span class="mcap">My van</span>', '(max-width: 960px) 46vw, 300px'),
-    photo('van_inside', 'm3', '<span class="mcap">Inside: cool and quiet</span>', '(max-width: 960px) 46vw, 300px'), photo('van_seats', 'm4', '<span class="mcap">Inside my van</span>', '(max-width: 960px) 46vw, 300px'),
-    photo('guests', 'm5', '<span class="mcap">With my guests</span>', '(max-width: 960px) 92vw, 380px')].filter(Boolean);
-  out += '<section class="about" id="about" aria-labelledby="about-h"><div class="wrap"><div class="about-head">' + avatar('about-av', '120px') + '<p class="eyebrow">About me</p>' +
+  /* Each photo appears once on the page: the hero already shows Night and the van, the van section shows the seats. */
+  var mos = [fig('guests', 'pf-wide', 'With my guests at Angkor Wat', '(max-width: 960px) 92vw, 560px'), fig('guests2', 'pf-wide', 'Me at Angkor Wat', '(max-width: 960px) 92vw, 560px')].filter(Boolean);
+  out += '<section class="about" id="about" aria-labelledby="about-h"><div class="wrap"><div class="about-head">' + '<p class="eyebrow">About me</p>' +
     '<h2 id="about-h">' + esc(T('about.heading', name)) + (has(A.subheading) ? '<span class="sr"> – </span><em>' + esc(A.subheading) + '</em>' : '') + '</h2></div>' +
-    '<div class="about-grid"><div class="mosaic mosaic-n' + mos.length + (P.van_inside && safeImg(P.van_inside) ? '' : ' no-m3') + '">' + mos.join('') + '</div><div class="about-story">' +
+    '<div class="about-grid"><div class="apics">' + mos.join('') + '</div><div class="about-story">' +
     (A.story || []).filter(has).map(function (p, i) { return '<p' + (i === 0 ? ' class="drop"' : '') + '>' + rich(p) + '</p>'; }).join('') +
     ((A.story || []).filter(has).length ? '<p class="signoff"><span class="sig">\u2014 ' + esc(name) + '</span></p>' : '') +
     (has(A.quote) ? '<blockquote class="nq">\u201c' + esc(A.quote) + '\u201d<cite>\u2014 ' + esc(name) + '</cite></blockquote>' : '') +
@@ -356,7 +377,7 @@ function render(raw, opts) {
   var places = (C.places || []).filter(function (p) { return has(p.name); });
   places = places.filter(function (p) { return safeImg(p.image); });
   if (places.length) out += '<section class="sec sec-alt" id="photos" aria-labelledby="photos-h"><div class="wrap"><div class="sec-head"><p class="eyebrow">' + esc(T('places_eyebrow', 'Photos from my trips')) + '</p><h2 id="photos-h">' + esc(T('places_heading', 'Out and about with my guests')) + '</h2></div><div class="gal2">' +
-    places.map(function (p) { return '<figure class="ph has-img">' + pic(safeImg(p.image), p.name, '(max-width: 600px) 46vw, (max-width: 960px) 30vw, 280px') + '<figcaption class="cap">' + esc(p.name) + '</figcaption></figure>'; }).join('') + '</div></div></section>\n';
+    places.map(function (p) { return '<figure class="pf pf-land"><div class="pf-img">' + pic(safeImg(p.image), p.name, '(max-width: 600px) 46vw, (max-width: 960px) 30vw, 280px') + '</div><figcaption>' + esc(p.name) + '</figcaption></figure>'; }).join('') + '</div></div></section>\n';
 
   /* ---------- FAQ ---------- */
   var faq = (C.faq || []).filter(function (f) { return has(f.q) && has(f.a); });
@@ -367,7 +388,7 @@ function render(raw, opts) {
   /* ---------- contact ---------- */
   var maps = safeUrl(C.google_maps_url);
   out += '<section class="sec" id="contact" aria-labelledby="contact-h"><div class="wrap"><div class="contact"><div class="bg" aria-hidden="true"></div><div class="in"><div>' +
-    avatar('contact-av', '88px') + '<p class="eyebrow">Book your trip</p><h2 id="contact-h">' + esc(T('contact.heading', 'Message ' + name)) + '</h2>' + (has(C.contact && C.contact.text) ? '<p>' + rich(C.contact.text) + '</p>' : '') +
+    '<p class="eyebrow">Book your trip</p><h2 id="contact-h">' + esc(T('contact.heading', 'Message ' + name)) + '</h2>' + (has(C.contact && C.contact.text) ? '<p>' + rich(C.contact.text) + '</p>' : '') +
     waBtn('btn btn-wa', T('contact.message'), 'Message ' + esc(name) + ' on WhatsApp') + '<a class="num notranslate" translate="no" href="tel:+' + num + '">' + esc(phone) + '</a></div>' +
     '<div class="mapcard"><div class="map">' + opts.map + '</div><div class="body"><b>Siem Reap town &amp; SAI airport</b><small>Pick-up from any hotel in Siem Reap.</small>' +
     (maps ? '<a class="btn btn-line btn-sm" href="' + esc(maps) + '" target="_blank" rel="noopener noreferrer"><svg class="wa-ico" aria-hidden="true"><use href="#pin"/></svg>Open in Google Maps</a>' : '') + '</div></div></div></div></div></section>\n</main>\n';

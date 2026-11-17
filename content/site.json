@@ -30,13 +30,14 @@
     "van_inside": "",
     "van_seats": "/images/night/van-seats.jpg",
     "guests": "/images/night/guests-angkor-wat.jpg",
-    "van_about": "/images/night/van-portrait.jpg"
+    "van_about": "",
+    "guests2": "/images/night/angkor-wat-selfie.jpg"
   },
   "hero": {
     "eyebrow": "Siem Reap · Cambodia",
-    "title": "Your private luxury van in Siem Reap.",
-    "highlight": "luxury van",
-    "text": "Airport pick-ups, temple days and city transfers with Mr Night. Relax in a cool, comfortable private van, with cold water after every stop.",
+    "title": "Your private driver and guide in Siem Reap",
+    "highlight": "driver and guide",
+    "text": "Airport pick-ups, temple days and city transfers in my luxury Toyota Alphard: quiet, cool and clean, with cold water after every stop.",
     "button": "Message Mr Night on WhatsApp",
     "message": "Hi Mr Night, I found your website. I would like to book your van. Dates: ___ People: ___ Trip: ___"
   },
@@ -110,7 +111,7 @@
         "highlight": true,
         "price": "",
         "from": false,
-        "image": "/images/night/banteay-srei-guests.jpg",
+        "image": "/images/night/angkor-naga-group.jpg",
         "message": "Hi Mr Night, I would like your favourite 2-day trip: temples + Kulen waterfall, with airport pick-up. Dates: ___ People: ___ Hotel: ___",
         "show_luggage": false
       }
@@ -208,7 +209,7 @@
     "flights": "Bangkok, Hanoi, Ho Chi Minh City, Singapore, Kuala Lumpur and more",
     "button": "Send me your flight number",
     "message": "Hi Mr Night, I am flying into Siem Reap (SAI). My flight number is: ___. Date: ___. Hotel: ___",
-    "image": "/images/night/van-sai-airport.jpg",
+    "image": "",
     "show_luggage": true
   },
   "bangkok": {
@@ -274,7 +275,7 @@
       {
         "name": "Angkor Wat",
         "text": "The biggest temple in the world. Come for sunrise over the lotus ponds, or later in the day when it is quieter.",
-        "image": "/images/night/angkor-wat-pond-guests.jpg",
+        "image": "/images/night/angkor-wat-guest.jpg",
         "stock": false
       },
       {
@@ -298,7 +299,7 @@
       {
         "name": "Kulen Mountain waterfall (Phnom Kulen)",
         "text": "The holy mountain: swim at the waterfall and see the river carvings and the big reclining Buddha.",
-        "image": "/images/stock/kulen-waterfall.jpg",
+        "image": "/images/stock/kulen-buddha-temple.jpg",
         "stock": true
       },
       {
@@ -341,24 +342,8 @@
       "image": "/images/night/apsara-dancers-guests.jpg"
     },
     {
-      "name": "Bayon temple with my guests",
-      "image": "/images/night/bayon-guests.jpg"
-    },
-    {
-      "name": "The giant tree roots at Ta Prohm",
-      "image": "/images/night/ta-prohm-roots.jpg"
-    },
-    {
-      "name": "A group day at the temples",
-      "image": "/images/night/angkor-naga-group.jpg"
-    },
-    {
       "name": "Angkor Wat with my guests",
       "image": "/images/night/angkor-wat-group-2.jpg"
-    },
-    {
-      "name": "At Angkor Wat with a guest",
-      "image": "/images/night/angkor-wat-guest.jpg"
     },
     {
       "name": "A temple door in the tree roots",
@@ -395,10 +380,6 @@
     {
       "name": "Angkor Wat with friends",
       "image": "/images/night/angkor-wat-two-guests.jpg"
-    },
-    {
-      "name": "Me at Angkor Wat",
-      "image": "/images/night/angkor-wat-selfie.jpg"
     },
     {
       "name": "Out on the golf course",
@@ -451,7 +432,7 @@
   },
   "translate": {
     "show": true,
-    "languages": "zh-CN,ko,fr,ja",
+    "languages": "km,th,zh-CN,ko,fr,ja",
     "label": "Translate this page"
   },
   "reviews": {
@@ -489,5 +470,67 @@
     "show": false,
     "title": "",
     "url": ""
-  }
+  },
+  "photo_positions": [
+    {
+      "image": "night-lotus.jpg",
+      "position": "95% 50%"
+    },
+    {
+      "image": "van-outside.jpg",
+      "position": "50% 60%"
+    },
+    {
+      "image": "van-seats.jpg",
+      "position": "50% 55%"
+    },
+    {
+      "image": "ta-prohm-roots.jpg",
+      "position": "50% 82%"
+    },
+    {
+      "image": "angkor-wat-guest.jpg",
+      "position": "50% 25%"
+    },
+    {
+      "image": "airport-arrivals-group.jpg",
+      "position": "50% 35%"
+    },
+    {
+      "image": "hilltop-viewpoint.jpg",
+      "position": "50% 80%"
+    },
+    {
+      "image": "hilltop-guests.jpg",
+      "position": "50% 72%"
+    },
+    {
+      "image": "angkor-wat-group-2.jpg",
+      "position": "50% 70%"
+    },
+    {
+      "image": "angkor-wat-two-guests.jpg",
+      "position": "50% 65%"
+    },
+    {
+      "image": "hotel-pickup-guests.jpg",
+      "position": "50% 70%"
+    },
+    {
+      "image": "temple-tree-roots.jpg",
+      "position": "50% 65%"
+    },
+    {
+      "image": "banteay-srei-guests.jpg",
+      "position": "50% 55%"
+    },
+    {
+      "image": "bayon-guests.jpg",
+      "position": "50% 60%"
+    },
+    {
+      "image": "angkor-wat-selfie.jpg",
+      "position": "40% 70%"
+    }
+  ]
 }

@@ -13,8 +13,8 @@
   --ph:#d9372b;         /* placeholder label red */
   --radius:20px;
   --shadow:0 18px 40px -18px rgba(16,41,44,.35),0 2px 6px rgba(16,41,44,.06);
-  --serif:'Fraunces',Georgia,serif;
-  --sans:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --serif:'Fraunces',Georgia,'Noto Sans Khmer','Khmer OS','Khmer OS System','Leelawadee UI','Noto Sans Thai','Thonburi','Tahoma',serif;
+  --sans:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans Khmer','Khmer OS','Khmer OS System','Leelawadee UI','Noto Sans Thai','Thonburi','Tahoma',sans-serif;
 }
 *{box-sizing:border-box}
 html{background:#0b1d1f}
@@ -749,3 +749,51 @@ html,body{top:0!important;position:static!important}
   .jc-ico svg{width:30px;height:30px}
   body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 }
+/* Hero photo pair (Night + van): nothing overlaps the photos */
+.hero .wrap{column-gap:72px}
+.hpair{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;align-items:end;max-width:560px;justify-self:end;width:100%}
+.hpair-one{grid-template-columns:1fr;max-width:400px}
+.hpair figure{margin:0;min-width:0}
+.hp-img{border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.3);box-shadow:0 30px 60px -20px rgba(0,0,0,.6);background:#1b1410}
+.hp-img picture,.hp-img img{display:block;width:100%;height:100%}
+.hp-img img{object-fit:cover}
+.hp-main .hp-img{aspect-ratio:4/5}
+.hp-main .hp-img img{object-position:76% 50%}
+.hp-van{margin-bottom:56px}
+.hp-van .hp-img{aspect-ratio:3/4}
+.hp-van .hp-img img{object-position:50% 60%}
+.hpair figcaption{margin-top:10px;font:600 14px/1.3 var(--sans);color:#f3ece2;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+@media (max-width:960px){.hero .wrap{row-gap:36px}.hpair{justify-self:stretch;max-width:520px}}
+@media (max-width:600px){.hpair{gap:12px}.hp-img{border-radius:16px}.hp-van{margin-bottom:34px}.hpair figcaption{font-size:14px;margin-top:8px}}
+/* ===== Photos with captions BELOW (figure.pf) – nothing is laid over the subject ===== */
+.pf{margin:0;min-width:0}
+.pf-img{border-radius:20px;overflow:hidden;background:#1b1410;box-shadow:var(--shadow)}
+.pf-img picture,.pf-img img{display:block;width:100%;height:100%}
+.pf-img img{object-fit:cover;object-position:50% 50%}
+.pf-wide .pf-img{aspect-ratio:3/2}
+.pf-land .pf-img{aspect-ratio:4/3}
+.pf-tall .pf-img{aspect-ratio:4/5}
+.pf figcaption{margin-top:9px;font:600 14px/1.35 var(--sans)}
+.dark .pf figcaption{color:#e9e2d6}
+/* van section */
+.cgal2{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:start}
+.cgal2 .pf-wide{grid-column:1/-1}
+/* about photos */
+.apics{display:grid;grid-template-columns:1fr;gap:18px;align-content:start}
+@media (max-width:960px){.apics{grid-template-columns:1fr 1fr;gap:14px}}
+@media (max-width:600px){.apics{grid-template-columns:1fr}}
+/* gallery */
+.gal2 figure.pf{aspect-ratio:auto;border-radius:0;overflow:visible;background:none}
+.gal2 .pf-img{aspect-ratio:4/3}
+@media (max-width:600px){.gal2 figure.pf{aspect-ratio:auto}.gal2 .pf-img{aspect-ratio:4/3;border-radius:14px}.gal2 .pf figcaption{font-size:14px}}
+/* hero pair: van frame is landscape */
+.hp-van .hp-img{aspect-ratio:4/3}
+.hpair{grid-template-columns:1.15fr 1fr}
+/* destination cards: stock label small, top-left corner */
+.dcard .stock{right:auto;left:10px;top:10px;font-size:12px;padding:5px 8px;background:rgba(16,41,44,.78)}
+.fkick{margin:0 0 6px;font:700 13px/1.2 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--laterite,#a5462a)}
+.hpair{max-width:600px}
+
+/* Khmer and Thai need a little more line height for stacked vowels */
+html[lang|=km] body,html[lang|=th] body{line-height:1.75}
+.tr select option{font-family:var(--sans)}

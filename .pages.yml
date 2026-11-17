@@ -51,7 +51,8 @@ content:
           - { name: headshot, label: "Small round photo of my face (About, contact, WhatsApp box). Square photo is best", type: image }
           - { name: night, label: "Big photo of me (About)", type: image }
           - { name: van_outside, label: "My van – outside", type: image }
-          - { name: van_about, label: "My van – second photo (About section)", type: image }
+          - { name: van_about, label: "My van – second photo (not shown now: each photo is used once)", type: image }
+          - { name: guests2, label: "Second About photo (you at a temple)", type: image }
           - { name: van_inside, label: "My van – inside", type: image }
           - { name: van_seats, label: "My van – massage seats", type: image }
           - { name: guests, label: "Me with guests (ask them first)", type: image }
@@ -224,6 +225,15 @@ content:
         fields:
           - { name: name, label: "Place", type: string }
           - { name: image, label: "Photo", type: image }
+      - name: photo_positions
+        label: "Photo crop focus (optional)"
+        description: "If a photo is cut off in its frame, pick which part to keep. Position = 'left% top%', e.g. '50% 60%' keeps the middle, a bit lower."
+        type: object
+        list:
+          collapsible: { collapsed: true, summary: "{image}" }
+        fields:
+          - { name: image, label: "Photo file name, e.g. van-outside.jpg", type: string }
+          - { name: position, label: "Position, e.g. 50% 60%", type: string }
       - name: faq
         label: "Questions and answers"
         type: object
@@ -244,7 +254,7 @@ content:
         type: object
         fields:
           - { name: show, label: "Show the translate menu", type: boolean }
-          - { name: languages, label: "Languages, as codes with commas (zh-CN = Chinese Simplified, ko = Korean, fr = French, ja = Japanese). English stays the default", type: string }
+          - { name: languages, label: "Languages, as codes with commas (km = Khmer, th = Thai, zh-CN = Chinese Simplified, ko = Korean, fr = French, ja = Japanese). English stays the default", type: string }
           - { name: label, label: "Label for screen readers", type: string }
       - name: widget
         label: "WhatsApp chat bubble"

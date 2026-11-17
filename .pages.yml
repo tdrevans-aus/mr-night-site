@@ -1,4 +1,7 @@
 # Pages CMS config (https://pagescms.org). Mr Night edits ONE file, content/site.json, from his phone.
+# Any text in [square brackets] is treated as a note and is not shown on the site.
+# Links in text boxes: write [words to click](https://example.com). Plain https:// addresses, website names
+# like example.com and email addresses become links by themselves. Only https/http, mailto: and tel: work.
 # Based on Nico's v3 config, extended to cover every field on the site.
 media:
   input: images
@@ -13,7 +16,10 @@ content:
     path: content/site.json
     format: json
     fields:
-      - { name: name, label: "My name on the site", type: string }
+      - { name: base_url, label: "Website address (PLACEHOLDER – change to the real address, e.g. https://mrnight.pages.dev)", type: string, pattern: { regex: "^https://[^\\s]+$", message: "Must start with https://" } }
+      - { name: brand, label: "Website / brand name (logo, page title, WhatsApp chat box), e.g. Mr Night - Tour Guide", type: string }
+      - { name: name, label: "My name in the text and messages (e.g. Mr Night)", type: string }
+      - { name: full_name, label: "My full Cambodian name (used for Google search info)", type: string }
       - { name: tagline, label: "Short line under my name", type: string }
       - { name: whatsapp, label: "WhatsApp number (numbers only, with 855, no + or spaces)", type: string, pattern: { regex: "^[0-9]{8,15}$", message: "Numbers only, for example 85517843878" } }
       - { name: phone_display, label: "Phone number as people see it", type: string }
@@ -34,13 +40,16 @@ content:
         type: object
         fields:
           - { name: model, label: "Van model", type: string }
-          - { name: seats, label: "Number of guests (empty = hidden)", type: string }
+          - { name: seats, label: "Number of guests, number only (e.g. 6)", type: string }
+          - { name: capacity, label: "How many guests, as text (e.g. up to 6 guests). Shown in the trust row, price table, van section. Empty = made from the number", type: string }
+          - { name: luggage_note, label: "Luggage note (van section, airport card, Flying in). Empty = hidden", type: text }
           - { name: massage_seats, label: "Which seats have massage (empty = hidden)", type: string }
       - name: photos
-        label: "My photos (empty = grey box)"
+        label: "My photos (empty = not shown)"
         type: object
         fields:
-          - { name: night, label: "Photo of me", type: image }
+          - { name: headshot, label: "Small round photo of my face (About, contact, WhatsApp box). Square photo is best", type: image }
+          - { name: night, label: "Big photo of me (About)", type: image }
           - { name: van_outside, label: "My van – outside", type: image }
           - { name: van_inside, label: "My van – inside", type: image }
           - { name: van_seats, label: "My van – massage seats", type: image }
@@ -63,7 +72,7 @@ content:
           - { name: confirmed, label: "I confirm I offer this (must be on to show)", type: boolean }
           - { name: text, label: "Short text", type: string }
       - name: border
-        label: "Thai border (Poipet)"
+        label: "Thai border (Poipet) – only shows inside the Bangkok section"
         type: object
         fields:
           - { name: show, label: "Show the border message", type: boolean }
@@ -83,13 +92,15 @@ content:
             list:
               collapsible: { collapsed: true, summary: "{title}" }
             fields:
-              - { name: title, label: "Trip name", type: string }
+              - { name: title, label: "Trip name ([brackets] are hidden on the site)", type: string }
+              - { name: fallback_title, label: "Name shown while the trip name is still in [brackets]", type: string }
               - { name: kicker, label: "Small label on the photo", type: string }
               - { name: text, label: "Text", type: text }
               - { name: note, label: "Extra note (optional)", type: string }
               - { name: quote, label: "My own words (optional)", type: text }
               - { name: highlight, label: "Big highlight card", type: boolean }
-              - { name: price, label: "Price per van (numbers only, empty = hidden)", type: string }
+              - { name: show_luggage, label: "Show the luggage note on this card", type: boolean }
+              - { name: price, label: "Price per van (numbers only; empty = 'Message me for price')", type: string }
               - { name: from, label: "Show 'from' before the price", type: boolean }
               - { name: image, label: "Photo", type: image }
               - { name: message, label: "WhatsApp message", type: text }
@@ -103,18 +114,17 @@ content:
             fields:
               - { name: name, label: "Trip", type: string }
               - { name: details, label: "Details", type: string }
-              - { name: price, label: "Price per van (numbers only, empty = hidden)", type: string }
+              - { name: price, label: "Price per van (numbers only; empty = 'Message me for price')", type: string }
               - { name: message, label: "WhatsApp message", type: text }
           - { name: included, label: "Included", type: string }
           - { name: not_included, label: "Not included", type: string }
       - name: guide
-        label: "Driver, not guide"
+        label: "Driver and licensed guide box"
         type: object
         fields:
           - { name: show, label: "Show this box", type: boolean }
           - { name: heading, label: "Title", type: string }
           - { name: text, label: "Text", type: text }
-          - { name: price, label: "Guide price per day (empty = hidden)", type: string }
       - name: van
         label: "The van section"
         type: object
@@ -132,19 +142,45 @@ content:
           - { name: quote, label: "My own words (empty = hidden)", type: text }
           - { name: why, label: "Why travel with me", type: string, list: true }
           - { name: driving_since, label: "Driving since (year, empty = hidden)", type: string }
-          - { name: experience, label: "Experience, e.g. 15 years (empty = hidden)", type: string }
+          - { name: experience, label: "Experience, e.g. 15+ years (empty = hidden)", type: string }
           - { name: languages, label: "Languages (empty = hidden)", type: string }
           - { name: licence, label: "Licence (empty = hidden)", type: string }
-      - name: bangkok
-        label: "Coming from Bangkok"
+      - name: flying_in
+        label: "Flying in (airport section)"
         type: object
         fields:
           - { name: show, label: "Show this section", type: boolean }
           - { name: eyebrow, label: "Small line", type: string }
           - { name: heading, label: "Title", type: string }
+          - { name: text, label: "Text ({flights} is replaced by the flight list below). Links: [words](https://...)", type: text }
+          - { name: flights, label: "Direct flights from (e.g. Bangkok, Hanoi, Singapore and more)", type: string }
+          - { name: button, label: "Button text", type: string }
+          - { name: message, label: "WhatsApp message for the button", type: text }
+          - { name: image, label: "Photo", type: image }
+          - { name: show_luggage, label: "Show the luggage note here", type: boolean }
+      - name: bangkok
+        label: "Coming from Bangkok (OFF while the land border is closed)"
+        type: object
+        fields:
+          - { name: show, label: "Show this section (switch on when the border opens; also shows the border message and Poipet steps)", type: boolean }
+          - { name: eyebrow, label: "Small line", type: string }
+          - { name: heading, label: "Title", type: string }
           - { name: text, label: "Text", type: text }
-          - { name: price_3d, label: "3-day price per person (empty = hidden)", type: string }
-          - { name: price_4d, label: "4-day price per person (empty = hidden)", type: string }
+          - { name: price_3d, label: "3-day price per person (numbers only; empty = 'Message me for price')", type: string }
+          - { name: price_4d, label: "4-day price per person (numbers only; empty = 'Message me for price')", type: string }
+          - name: tbc
+            label: "'To be confirmed' note"
+            type: object
+            fields:
+              - { name: show, label: "Show the note", type: boolean }
+              - { name: text, label: "Note text", type: text }
+          - name: poipet
+            label: "Poipet border steps"
+            type: object
+            fields:
+              - { name: show, label: "Show the steps", type: boolean }
+              - { name: title, label: "Title", type: string }
+              - { name: steps, label: "Steps (one box = one step)", type: string, list: true }
           - name: days_3d
             label: "3-day plan"
             type: object
@@ -174,7 +210,7 @@ content:
           collapsible: { collapsed: true, summary: "{q}" }
         fields:
           - { name: q, label: "Question", type: string }
-          - { name: a, label: "Answer", type: text }
+          - { name: a, label: "Answer (links: [words to click](https://example.com))", type: text }
       - name: contact
         label: "Contact box"
         type: object

@@ -2,12 +2,12 @@
 
 The temple and place photos on this site come from Wikimedia Commons. They are used under the licences below. The files were resized and compressed for the web; nothing else was changed. `images/og-image.jpg` (the link preview picture) is made from the Angkor Wat sunrise photo below, with the words "Mr Night" added, and is shared under the same licence (CC BY-SA 3.0).
 
-There are **no** photos of Mr Night, his van or his guests on the site yet. Those spaces are grey boxes until Mr Night uploads his own photos.
+Photos in `images/night/` (Mr Night, his Toyota Alphard, his guests) are Mr Night's own photos, sent by him on 17 Nov 2026 for this website. They were resized, compressed and stripped of metadata. Spaces without his own photo (van interior, massage seats) are grey boxes.
 
 | File | What it shows | Author | Licence | Source |
 |---|---|---|---|---|
 | images/stock/hero-angkor-sunrise.jpg | Angkor Wat Sunrise (209237385) | Reinhard Onasch | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Angkor_Wat_Sunrise_(209237385).jpeg) |
-| images/stock/angkor-pond.jpg | Angkor Wat from north pond | User:Gisling | [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Angkor_Wat_from_north_pond.JPG) |
+| images/stock/angkor-pond.jpg | Angkor Wat from north pond | User:Gisling | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Angkor_Wat_from_north_pond.JPG) |
 | images/stock/banteay-srei.jpg | Banteay Srei 32a | Olaf Tausch | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Banteay_Srei_32a.jpg) |
 | images/stock/airport-sai.jpg | New Siem Reap-Angkor International Airport 04 | Codas | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:New_Siem_Reap-Angkor_International_Airport_04.jpg) |
 | images/stock/pkg-bayon.jpg | Angkor - Bayon - 005 Tower Faces (8580723963) | Photo Dharma from Penang, Malaysia | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Angkor_-_Bayon_-_005_Tower_Faces_(8580723963).jpg) |

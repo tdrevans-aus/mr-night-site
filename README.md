@@ -1,53 +1,76 @@
-# Mr Night – private luxury van in Siem Reap
+# Mr Night - Tour Guide – website (private luxury van and licensed guide in Siem Reap)
 
-A free, one-page website for Mr Night, a private driver in Siem Reap, Cambodia (Toyota Alphard with reclining massage seats).
+A free, one-page website for Mr Night (Meun Reatrey), a private driver and licensed guide in Siem Reap, Cambodia (Toyota Alphard with reclining massage seats).
 
-- Plain HTML, CSS and a small JavaScript file. **No build step.**
 - **All words, prices, photos and on/off switches live in one file: `content/site.json`.**
-- Mr Night edits that file from his phone with **Pages CMS** (free).
+- Mr Night edits that file (and uploads photos to `images/`) from his phone with **Pages CMS** (free).
+- A tiny build step with **no dependencies** (`node build.js`) bakes the content into plain HTML in `dist/`. Visitors without JavaScript, search engines and WhatsApp/Facebook link previews all see the full page.
 - Hosting: **Cloudflare Pages** free plan. Cost: **US$0**. A domain name is optional (about US$11 a year, which Mr Night must renew himself).
 
 This project is separate from any other project. It must belong to Mr Night's own accounts.
 
+## Cloudflare Pages build settings
+
+| Setting | Value |
+|---|---|
+| Framework preset | None |
+| Build command | `node build.js` |
+| Build output directory | `dist` |
+| Root directory | (leave empty) |
+| Environment variables | none needed (optional: `NODE_VERSION` = `20`) |
+
+Every commit (including every **Save** in Pages CMS) makes Cloudflare run `node build.js` again, and the new site is live in about a minute.
+
 ## Files
 
 ```
-index.html          the page (layout only; the words come from content/site.json)
-content/site.json   ALL the content Mr Night edits
-.pages.yml          Pages CMS settings (turns site.json into a phone form)
+content/site.json   ALL the content Mr Night edits (single source of truth)
+.pages.yml          Pages CMS settings (turns site.json into a phone form)    [not published]
+build.js            build script: content/site.json -> dist/                [not published]
+src/render.js       turns the content into HTML (used by build.js)            [not published]
+src/icons.svg.html, src/map.svg.html   inline SVG pieces used by the build   [not published]
 css/style.css       design
-js/site.js          reads site.json and fills the page; WhatsApp chat bubble; review switches
-images/             photos (uploads from Pages CMS go here)
-images/stock/       free-licence temple and place photos (see CREDITS.md)
-credits.html        photo credits page (linked in the footer)
-CREDITS.md          photo credits and licences
-EDIT-GUIDE.md       simple guide for Mr Night
+js/site.js          small script: WhatsApp chat bubble only (page works without it)
+images/             photos (Pages CMS uploads go here); images/stock/ = credited temple/place photos
+credits.html        photo credits page (published, linked in the footer)
 favicon.svg, favicon.ico, favicon-32.png, apple-touch-icon.png, images/og-image.jpg
+README.md, EDIT-GUIDE.md, CREDITS.md   documentation                        [not published]
+dist/               build output (not committed; Cloudflare builds it)
 ```
 
-## Look at it on a computer
+`build.js` publishes **only** `css/`, `js/`, `images/`, `credits.html` and the favicons, plus the generated `index.html`, `404.html`, `robots.txt` and `sitemap.xml`. Documentation, the CMS config, build scripts and any QA files never go online.
+
+## Build and preview on a computer
 
 ```
-python3 -m http.server 8000
+node build.js
+python3 -m http.server 8000 --directory dist
 ```
-Then open http://localhost:8000 . (Opening `index.html` straight from the disk does not work, because the page loads `content/site.json`.)
-Add `?chat=open` to the address to see the WhatsApp chat bubble open.
+Then open http://localhost:8000 . Add `?chat=open` to see the WhatsApp chat bubble open.
 
-## Rules built into the page
+## Rules built into the build
 
+- **Brand vs name:** `brand` in `site.json` ("Mr Night - Tour Guide") is the site name: logo text in the header and footer, `<title>`, `og:title`, `og:site_name`, `apple-mobile-web-app-title`, the WhatsApp widget name, the 404 page and the JSON-LD business name. `name` ("Mr Night") is his name in running text, buttons ("Message Mr Night on WhatsApp"), quotes and prefilled WhatsApp messages ("Hi Mr Night, ..."). The About heading is its own field ("Mr Night (Meun Reatrey)").
+
+- **Website address:** `base_url` in `site.json` (default `https://mrnight.pages.dev` is a **placeholder** – change it to the real address). It is used for the canonical link, `og:url`, the absolute `og:image`, `robots.txt` and `sitemap.xml`.
+- **[Brackets] are notes, not content.** Any text in `[square brackets]` is removed when the page is built. If nothing meaningful is left, the field is hidden. Example: `"Mr Night [full name]"` shows as "Mr Night". A featured trip whose title is only a note (e.g. `"[waterfall, confirm: Kulen?]"`) shows its `fallback_title` instead ("Waterfall day").
 - **Prices:** an empty price shows "Message me for price". Never invent a price.
-- **Photos:** an empty photo field shows a grey box with a label (for example "PHOTO: Alphard interior – massage seats"). Only Mr Night's own photos go there.
+- **Photos:** an empty photo field is left out of the page (no grey boxes, no "PHOTO:" labels); the layouts close up. `photos.headshot` is the round face photo (About heading, contact card, WhatsApp widget); `photos.night` is the big About photo. Photos in `images/night/` have resized WebP copies next to them (`name-800w.webp` etc.); `build.js` finds them and writes `<picture>` with a WebP `srcset` and the JPG as fallback. A photo uploaded later through Pages CMS without WebP copies just renders as a plain `<img>`.
+- **Links in text:** text fields are escaped first, then `[words](https://...)`, bare `https://` addresses, bare domains (e.g. `angkorenterprise.gov.kh`) and email addresses become links. Only http(s), `mailto:` and `tel:` are allowed; anything else (e.g. `javascript:`) is never linked. External links get `target="_blank" rel="noopener noreferrer"`; wa.me, tel: and mailto: links open normally. Tests: `node tests/links.test.js`.
 - **Reviews are OFF by default.** Nothing about reviews shows unless it is switched on **and** has a real `https://` link:
   - `reviews.tripadvisor` – show + link. If `widget_location_id` (numbers only) is filled, TripAdvisor's free live widget is used (rating badge in the bar, latest reviews in the reviews section).
-  - `reviews.google` – show + link + a rating and count that Mr Night types himself (for example 4.9 and 12). If the rating or count is empty, nothing shows.
+  - `reviews.google` – show + link + a rating and count that Mr Night types himself (for example 4.9 and 12). If either is missing or not a number, nothing shows.
   - `reviews.getyourguide`, `reviews.booking` – show + link.
   - `reviewsWall` – show + at least one real review with a link (or the TripAdvisor live widget).
   - `award` – show + title + link to proof.
-  - All typed text is shown as plain text (HTML is escaped). Links must start with `https://`.
-- **Border line:** `border.note` is editable. The default does not say the border is open or closed: "Please message me to check the current border status before you travel."
+  - All typed text is escaped. Links must start with `https://`.
+- **Border closed (Nov 2026):** `bangkok.show` is `false`, so the whole Bangkok section, the Poipet steps and the border line render nothing (no nav item, no empty section). The border line only ever renders inside the Bangkok section. All the Bangkok/border content stays in `site.json` and in Pages CMS; switching `bangkok.show` back on (EDIT-GUIDE section 3) restores it. `border.note` is editable.
+- **Van capacity and luggage:** `vehicle.seats` (6) and `vehicle.capacity` ("up to 6 guests") feed the trust row ("Price per van, up to 6 guests"), the price-table header, the van section and the About facts band. `vehicle.luggage_note` shows in the van section, on featured cards with `show_luggage: true` (the airport card) and in Flying in (`flying_in.show_luggage`). The FAQ has a matching "How many people and bags fit?" entry.
+- **Flying in:** `flying_in` (show, eyebrow, heading, text with a `{flights}` token, flights, button, message, image) is the airport section that replaces Bangkok in the page and nav ("Flying in" → `#flying-in`).
+- **Bangkok card:** the bus is Travel Mart's. `bangkok.tbc` shows a small "To be confirmed" note under the day plans and the Poipet steps until the details are checked against the brochure; switch it off when confirmed.
 - **Book now, pay later** shows only if both `show` and `confirmed` are on.
 - **WhatsApp:** every button opens `https://wa.me/<number>?text=<message>`, using `whatsapp` from `site.json`.
-- He is presented as a **driver, not a licensed temple guide**.
+- **Driver and guide:** Mr Night is a private driver **and** a fully qualified, licensed Siem Reap guide. Trip notes, the guide box and the FAQ say "Driver and licensed guide in one. I am a fully qualified Siem Reap guide, so I can drive you AND guide you inside the temples." The trust row and the About facts band show "Licensed Siem Reap guide".
 
 ## Handover to Mr Night (do these with him; all free)
 
@@ -63,23 +86,23 @@ Do not create accounts for him without his say. He should own every account, wit
    (Or upload the files with GitHub's "Add file → Upload files" page.)
 4. **Cloudflare Pages (free):** create a Cloudflare account in his name at https://dash.cloudflare.com/sign-up. Go to **Workers & Pages → Create → Pages → Connect to Git**, pick his repository, and set:
    - Framework preset: **None**
-   - Build command: **(leave empty)**
-   - Build output directory: **/**
+   - Build command: **`node build.js`**
+   - Build output directory: **`dist`**
    Save and deploy. The site will be at `https://<project-name>.pages.dev`. Every change saved on GitHub goes live in about a minute.
 5. **Pages CMS (free):** open https://app.pagescms.org on his phone, sign in with GitHub, and allow Pages CMS to use his `mr-night-site` repository. It reads `.pages.yml` and shows **My website** as a simple form.
 6. **Add the home screen shortcut:** in Chrome on his phone, open app.pagescms.org → menu → **Add to Home screen**.
 7. Give him `EDIT-GUIDE.md` (print it or send it on WhatsApp).
-8. **After the site has its final address:** change `og:image` in `index.html` to the full address (for example `https://mr-night.pages.dev/images/og-image.jpg`) so WhatsApp and Facebook link previews show the picture.
+8. **After the site has its final address:** in Pages CMS, change **Website address** (`base_url`) to the real address (for example `https://mr-night.pages.dev`). The build then uses it for link previews, the canonical link, robots.txt and sitemap.xml.
 9. **Optional domain:** buy one in his name (Cloudflare Registrar is at cost, about US$11 a year), then add it in Cloudflare Pages → Custom domains. He must renew it every year.
 10. **Get found:** create a free Google Business Profile and a TripAdvisor listing in his name. When he has real reviews, switch the badges on in Pages CMS.
 
 ## Things still to get from Mr Night
 
-- Photos: him, the Alphard outside, inside, the massage seats, him with guests (with their permission).
-- Prices for every trip (per van), the guide price, and Bangkok trip prices if he sells them.
+- Photos still missing: the Alphard inside and the massage seats (his portrait, the van outside and a guest photo are in `images/night/`). Confirm the guests in `guests-angkor-wat.jpg` are happy to be shown.
+- Prices for every trip (per van), and Bangkok trip prices if he sells them.
 - Number of guests the van takes, and which seats have massage.
 - The waterfall trip name (Phnom Kulen?).
-- His story in his own words, languages, the year he started driving, licence.
+- The year he started driving.
 - His link with the Bangkok tour company, and whether he can advertise its trips.
 - Reply time, payment methods, whether he offers "book now, pay later", child seats.
 - Google Maps / TripAdvisor / Facebook links, if any.

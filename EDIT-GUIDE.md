@@ -31,17 +31,43 @@ Only use photos of guests if they say yes.
 
 ---
 
-## 3. Change the border message
+## 3. When the Thai border opens again
 
-1. Tap **Thai border (Poipet)**.
-2. Change **Border message**. Example: "The border at Poipet is open again. Message me to plan your trip."
-3. In **Date of this update**, type today's date. Example: `20 Dec 2026`.
-4. Tap **Save**.
+Right now the land border is closed, so the **Coming from Bangkok** part is switched **off**. Nothing about Bangkok buses, Poipet or the border shows on your website. Your text is kept safe.
+
+To show it again:
+
+1. Tap **Coming from Bangkok**.
+2. Switch on **Show this section**. (This also shows the border message and the Poipet steps.)
+3. Tap **Thai border (Poipet)** and change **Border message**. Example: "The border at Poipet is open again. Message me to plan your trip."
+4. In **Date of this update**, type today's date. Example: `20 Dec 2026`.
+5. Tap **Save**.
 
 Please only write what is true today. If you are not sure, use:
 "Please message me to check the current border status before you travel."
 
-To hide the message, switch off **Show the border message**.
+The **Flying in** part (airport pick-up) stays on. You can change its text, the list of direct flights and the button there.
+
+---
+
+## 4. Add a link
+
+In any text box (for example an answer in **Questions and answers**), write:
+
+`[words to click](https://www.example.com/)`
+
+Example: `[angkorenterprise.gov.kh](https://www.angkorenterprise.gov.kh/)`
+
+Website addresses that start with `https://`, names like `example.com` and email addresses also become links by themselves. Website links open in a new tab.
+
+---
+
+## 5. Change the website name
+
+1. Tap **My website** (the top of the form).
+2. **Website / brand name** is the name in the logo, the page title and the WhatsApp chat box. Now it is `Mr Night - Tour Guide`.
+3. **My name in the text and messages** is how you are called in the text, for example `Mr Night`. Keep it short.
+4. Tap **Save**.
 
 ---
 
@@ -50,4 +76,4 @@ To hide the message, switch off **Show the border message**.
 - **Reviews:** switch them on only when you have **real** reviews. Never write a review yourself. Paste the link to your real page (it starts with `https://`).
 - **Google rating:** type your real rating (for example `4.9`) and your real number of reviews (for example `12`).
 - **Your WhatsApp number** is in **WhatsApp number**. Numbers only: `85517843878`.
-- If something looks wrong, message Tim.
+- If something looks wrong, ask your helper (the person who set up your website).

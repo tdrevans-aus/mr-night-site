@@ -51,6 +51,7 @@ content:
           - { name: headshot, label: "Small round photo of my face (About, contact, WhatsApp box). Square photo is best", type: image }
           - { name: night, label: "Big photo of me (About)", type: image }
           - { name: van_outside, label: "My van – outside", type: image }
+          - { name: van_about, label: "My van – second photo (About section)", type: image }
           - { name: van_inside, label: "My van – inside", type: image }
           - { name: van_seats, label: "My van – massage seats", type: image }
           - { name: guests, label: "Me with guests (ask them first)", type: image }
@@ -195,8 +196,28 @@ content:
             fields:
               - { name: title, label: "Day title", type: string }
               - { name: text, label: "Day text", type: text }
+      - name: destinations
+        label: "Places I can take you (destination cards)"
+        type: object
+        fields:
+          - { name: show, label: "Show this section", type: boolean }
+          - { name: eyebrow, label: "Small line above the title", type: string }
+          - { name: heading, label: "Title", type: string }
+          - { name: message, label: "WhatsApp message for the Ask buttons ({place} = the card name)", type: string }
+          - name: items
+            label: "Places (top to bottom)"
+            type: object
+            list:
+              collapsible: { collapsed: true, summary: "{name}" }
+            fields:
+              - { name: name, label: "Place", type: string }
+              - { name: text, label: "One-line description (links: [text](https://...))", type: text }
+              - { name: image, label: "Photo (use your own if you have one)", type: image }
+              - { name: stock, label: "This is a stock photo (shows a 'Stock photo' label – add the credit to credits.html)", type: boolean }
+      - { name: places_eyebrow, label: "Photo gallery – small line", type: string }
+      - { name: places_heading, label: "Photo gallery – title", type: string }
       - name: places
-        label: "Places I can take you"
+        label: "Photo gallery (your own photos)"
         type: object
         list:
           collapsible: { collapsed: true, summary: "{name}" }

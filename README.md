@@ -107,3 +107,7 @@ Do not create accounts for him without his say. He should own every account, wit
 - His link with the Bangkok tour company, and whether he can advertise its trips.
 - Reply time, payment methods, whether he offers "book now, pay later", child seats.
 - Google Maps / TripAdvisor / Facebook links, if any.
+
+## Places and photo gallery
+- **Places I can take you** (`destinations` in `content/site.json`): one card per place with a name, one-line text, photo and an "Ask" WhatsApp button. The button message is `destinations.message`; `{place}` is replaced by the card name. Use Night's own photo where he has one. If a card uses a stock photo, tick `stock` so the page shows a "Stock photo" label, and add the credit to `credits.html` and `CREDITS.md`. Never print green fees or ticket prices.
+- **Photos from my trips** (`places` in `content/site.json`): the gallery of Night's own photos (files in `images/night/`). Keep each photo on the page no more than twice.

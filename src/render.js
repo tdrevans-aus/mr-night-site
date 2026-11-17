@@ -75,6 +75,7 @@ var PHOTO_ALT = {
   van_outside: 'Mr Night\u2019s Toyota Alphard luxury van',
   van_inside: 'Inside Mr Night\u2019s Toyota Alphard',
   van_seats: 'Reclining massage seats in Mr Night\u2019s van',
+  van_about: 'Mr Night\u2019s white Toyota Alphard',
   guests: 'Mr Night with his guests'
 };
 var NAMES = { tripadvisor: 'TripAdvisor', google: 'Google', getyourguide: 'GetYourGuide', booking: 'Booking.com' };
@@ -195,9 +196,7 @@ function render(raw, opts) {
     '<h1>' + heroTitle + '</h1>' + (has(H.text) ? '<p class="lead">' + rich(H.text) + '</p>' : '') +
     '<div class="ctas">' + waBtn('btn btn-wa', H.message, esc(T('hero.button', 'Message ' + name + ' on WhatsApp'))) +
     '<a class="btn btn-ghost" href="#trips">See trips <svg class="wa-ico" aria-hidden="true"><use href="#arrow"/></svg></a></div></div>' +
-    '<div class="vancard">' + photo('van_outside', 'a', '<span class="lbl">' + esc(model) + '</span>', '(max-width: 960px) 92vw, 440px') +
-    '<div class="b">' + photo('van_seats', '', '<span class="lbl">Inside the van</span>', '(max-width: 960px) 46vw, 220px') +
-    photo('van_inside', '', '<span class="lbl">' + (Capacity ? esc(Capacity) : 'Inside the van') + '</span>', '(max-width: 960px) 46vw, 220px') + '</div></div></div></section>\n';
+    '<div class="vancard vancard-one">' + photo('van_outside', 'a', '<span class="lbl">' + esc(model) + (Capacity ? ' \u00b7 ' + esc(Capacity) : '') + '</span>', '(max-width: 960px) 92vw, 440px') + '</div></div></section>\n';
 
   /* ---------- trust row ---------- */
   var B = C.book_now_pay_later || {};
@@ -262,7 +261,7 @@ function render(raw, opts) {
 
   /* ---------- the van ---------- */
   var feats = [['Room to stretch out', has(V.massage_seats) ? V.massage_seats : 'Rest between temples'], [Capacity || 'Room for your group', 'Room for bags too'], ['Strong air-con', 'Cool before you get in'], ['Cold water', 'After every stop']];
-  out += '<section class="sec dark" id="van" aria-labelledby="van-h"><div class="wrap comfort"><div class="cgal">' + photo('van_outside') + photo('van_seats') + photo('van_inside') + '</div><div>' +
+  out += '<section class="sec dark" id="van" aria-labelledby="van-h"><div class="wrap comfort"><div class="cgal">' + photo('van_outside', '', '<span class="mcap">My Toyota Alphard at SAI airport</span>', '(max-width: 960px) 92vw, 280px') + photo('van_seats', '', '<span class="mcap">Inside: the massage seats</span>', '(max-width: 960px) 92vw, 280px') + photo('van_inside', '', '<span class="mcap">Inside the van</span>', '(max-width: 960px) 92vw, 280px') + '</div><div>' +
     '<p class="eyebrow">The van</p><h2 class="van-h" id="van-h">' + esc(T('van.heading', 'Travel in comfort')) + '</h2>' + (has(C.van && C.van.text) ? '<p class="van-p">' + rich(C.van.text) + '</p>' : '') +
     '<ul class="feats">' + feats.map(function (f) { return '<li><b>' + esc(f[0]) + '</b>' + esc(f[1]) + '</li>'; }).join('') + '</ul>' +
     (luggage ? '<p class="lug"><svg class="wa-ico" aria-hidden="true"><use href="#i-van"/></svg>' + rich(luggage) + '</p>' : '') +
@@ -280,14 +279,14 @@ function render(raw, opts) {
   var proof = on.length ? '<div class="bar proofbar" style="grid-template-columns:repeat(' + on.length + ',1fr)">' + badges + '</div>' : '';
   var AW = C.award || {};
   if (AW.show === true && safeUrl(AW.url) && has(AW.title)) proof += '<p class="award"><a href="' + esc(safeUrl(AW.url)) + '" target="_blank" rel="noopener noreferrer"><b>\ud83c\udfc6 ' + esc(AW.title) + '</b></a></p>';
-  var mos = [photo('night', 'm1', '', '(max-width: 960px) 92vw, 380px'), photo('van_outside', 'm2', '<span class="mcap">My van</span>', '(max-width: 960px) 46vw, 300px'),
+  var mos = [photo('night', 'm1', '', '(max-width: 960px) 92vw, 380px'), photo(safeImg(P.van_about) ? 'van_about' : 'van_outside', 'm2', '<span class="mcap">My van</span>', '(max-width: 960px) 46vw, 300px'),
     photo('van_inside', 'm3', '<span class="mcap">Inside: cool and quiet</span>', '(max-width: 960px) 46vw, 300px'), photo('van_seats', 'm4', '<span class="mcap">Inside my van</span>', '(max-width: 960px) 46vw, 300px'),
     photo('guests', 'm5', '<span class="mcap">With my guests</span>', '(max-width: 960px) 92vw, 380px')].filter(Boolean);
   out += '<section class="about" id="about" aria-labelledby="about-h"><div class="wrap"><div class="about-head">' + avatar('about-av', '120px') + '<p class="eyebrow">About me</p>' +
     '<h2 id="about-h">' + esc(T('about.heading', name)) + (has(A.subheading) ? '<span class="sr"> – </span><em>' + esc(A.subheading) + '</em>' : '') + '</h2></div>' +
     '<div class="about-grid"><div class="mosaic mosaic-n' + mos.length + (P.van_inside && safeImg(P.van_inside) ? '' : ' no-m3') + '">' + mos.join('') + '</div><div class="about-story">' +
     (A.story || []).filter(has).map(function (p, i) { return '<p' + (i === 0 ? ' class="drop"' : '') + '>' + rich(p) + '</p>'; }).join('') +
-    ((A.story || []).filter(has).length ? '<p class="signoff">' + avatar('sig-av', '48px') + '<span class="sig">\u2014 ' + esc(name) + '</span></p>' : '') +
+    ((A.story || []).filter(has).length ? '<p class="signoff"><span class="sig">\u2014 ' + esc(name) + '</span></p>' : '') +
     (has(A.quote) ? '<blockquote class="nq">\u201c' + esc(A.quote) + '\u201d<cite>\u2014 ' + esc(name) + '</cite></blockquote>' : '') +
     (why.length ? '<div class="why"><h3>Why travel with me</h3><ul>' + why.map(function (w) { return '<li>' + rich(w) + '</li>'; }).join('') + '</ul></div>' : '') + '</div></div>' +
     (band.length > 1 ? '<dl class="tband n' + band.length + '" style="grid-template-columns:repeat(' + band.length + ',1fr)">' + band.map(function (b) { return '<div><dt>' + esc(b[0]) + '</dt><dd><b>' + esc(b[1]) + '</b>' + (b[2] ? '<span>' + esc(b[2]) + '</span>' : '') + '</dd></div>'; }).join('') + '</dl>' : '') +
@@ -341,10 +340,23 @@ function render(raw, opts) {
       waBtn('btn btn-wa btn-sm', 'Hi Mr Night, I\'m coming from Bangkok. Can you help me arrange the Travel Mart bus (3-day or 4-day trip), or a pick-up if I fly? Dates: ___ People: ___', 'Ask ' + esc(name)) + '</div></div></div></div></section>\n';
   }
 
-  /* ---------- places ---------- */
+  /* ---------- destinations (Places I can take you) ---------- */
+  var D = C.destinations || {};
+  var dItems = (D.items || []).filter(function (x) { return has(x.name); });
+  if (D.show !== false && dItems.length) out += '<section class="sec" id="places" aria-labelledby="places-h"><div class="wrap"><div class="sec-head"><p class="eyebrow">' + esc(T('destinations.eyebrow', 'Where we can go')) + '</p><h2 id="places-h">' + esc(T('destinations.heading', 'Places I can take you')) + '</h2></div><div class="dgrid">' +
+    dItems.map(function (x) {
+      var img = safeImg(x.image), nm = str(x.name);
+      var msg = (str(D.message) || 'Hi Mr Night, I would like to visit {place}. Can you help me plan it?').replace(/\{place\}/g, nm);
+      return '<article class="dcard">' + (img ? '<div class="ph has-img">' + pic(img, nm, '(max-width: 600px) 92vw, (max-width: 960px) 46vw, 380px') + (x.stock ? '<span class="stock">Stock photo</span>' : '') + '</div>' : '') +
+        '<div class="body"><h3>' + esc(nm) + '</h3>' + (has(x.text) ? '<p>' + rich(x.text) + '</p>' : '') +
+        waBtn('btn btn-wa btn-sm dask', msg, 'Ask<span class="sr"> about ' + esc(nm) + '</span>') + '</div></article>';
+    }).join('') + '</div><p class="dnote"><a href="/credits.html">Photo credits</a></p></div></section>\n';
+
+  /* ---------- places (photo gallery) ---------- */
   var places = (C.places || []).filter(function (p) { return has(p.name); });
-  if (places.length) out += '<section class="sec" id="places" aria-labelledby="places-h"><div class="wrap"><div class="sec-head"><p class="eyebrow">Beyond the temples</p><h2 id="places-h">Places I can take you</h2></div><div class="gal">' +
-    places.map(function (p) { var img = safeImg(p.image); return '<div role="img" aria-label="' + esc(p.name) + '"' + (img ? ' style="background-image:url(\'' + esc(img) + '\')"' : '') + '><span class="cap">' + esc(p.name) + '</span></div>'; }).join('') + '</div></div></section>\n';
+  places = places.filter(function (p) { return safeImg(p.image); });
+  if (places.length) out += '<section class="sec sec-alt" id="photos" aria-labelledby="photos-h"><div class="wrap"><div class="sec-head"><p class="eyebrow">' + esc(T('places_eyebrow', 'Photos from my trips')) + '</p><h2 id="photos-h">' + esc(T('places_heading', 'Out and about with my guests')) + '</h2></div><div class="gal2">' +
+    places.map(function (p) { return '<figure class="ph has-img">' + pic(safeImg(p.image), p.name, '(max-width: 600px) 46vw, (max-width: 960px) 30vw, 280px') + '<figcaption class="cap">' + esc(p.name) + '</figcaption></figure>'; }).join('') + '</div></div></section>\n';
 
   /* ---------- FAQ ---------- */
   var faq = (C.faq || []).filter(function (f) { return has(f.q) && has(f.a); });

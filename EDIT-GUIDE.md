@@ -88,3 +88,7 @@ Your name, phone number and WhatsApp messages stay the same in every language.
 - **Google rating:** type your real rating (for example `4.9`) and your real number of reviews (for example `12`).
 - **Your WhatsApp number** is in **WhatsApp number**. Numbers only: `85517843878`.
 - If something looks wrong, ask your helper (the person who set up your website).
+
+## Places and photos
+- **Places I can take you**: in Pages CMS open *Places I can take you (destination cards)*. Each place has a name, one line of text and a photo. The green "Ask" button sends a WhatsApp message with the place name in it. If you use a photo that is not yours, tick "This is a stock photo" and ask your helper to add the credit.
+- **Photos from my trips**: open *Photo gallery (your own photos)*. Add your own photo and write a short caption, for example "Bayon temple with my guests".

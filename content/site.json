@@ -29,7 +29,8 @@
     "van_outside": "/images/night/van-outside.jpg",
     "van_inside": "",
     "van_seats": "/images/night/van-seats.jpg",
-    "guests": "/images/night/guests-angkor-wat.jpg"
+    "guests": "/images/night/guests-angkor-wat.jpg",
+    "van_about": "/images/night/van-portrait.jpg"
   },
   "hero": {
     "eyebrow": "Siem Reap · Cambodia",
@@ -67,22 +68,22 @@
         "highlight": false,
         "price": "",
         "from": false,
-        "image": "/images/stock/angkor-pond.jpg",
+        "image": "/images/night/angkor-wat-pond-guests.jpg",
         "message": "Hi Mr Night, I would like the Temple day (Angkor Wat and the main temples). Date: ___ People: ___ Hotel: ___",
         "show_luggage": false
       },
       {
-        "title": "[waterfall, confirm: Kulen?]",
+        "title": "Kulen Mountain waterfall",
         "fallback_title": "Waterfall day",
         "kicker": "🌿 About 1.5 hours away",
-        "text": "A full day out of town to the waterfall, about 1.5 hours from Siem Reap. Relax in the van on the way there and back.",
-        "note": "",
+        "text": "A full day out to Phnom Kulen, the holy mountain, about 1.5 hours from Siem Reap. Swim at the waterfall, see the river carvings and the big reclining Buddha. Relax in the van on the way there and back.",
+        "note": "Kulen has its own entry ticket, paid on the day.",
         "quote": "",
         "highlight": false,
         "price": "",
         "from": false,
-        "image": "",
-        "message": "Hi Mr Night, I would like the Waterfall day trip. Date: ___ People: ___ Hotel: ___",
+        "image": "/images/stock/kulen-waterfall.jpg",
+        "message": "Hi Mr Night, I would like the Kulen Mountain waterfall day trip. Date: ___ People: ___ Hotel: ___",
         "show_luggage": false
       },
       {
@@ -95,22 +96,22 @@
         "highlight": false,
         "price": "",
         "from": false,
-        "image": "/images/night/van-sai-airport.jpg",
+        "image": "/images/night/airport-arrivals-group.jpg",
         "message": "Hi Mr Night, I need an airport pick-up / transfer (SAI). Flight number: ___ Date: ___ People: ___ Hotel: ___",
         "show_luggage": true
       },
       {
-        "title": "Mr Night's favourite: 2 days, temples + waterfall",
+        "title": "Mr Night's favourite: 2 days, temples + Kulen waterfall",
         "fallback_title": "",
         "kicker": "2 days",
-        "text": "Day 1: Angkor Wat and the main temples. Day 2: the waterfall. I can also pick you up at the airport and take you to your hotel.",
+        "text": "Day 1: Angkor Wat and the main temples. Day 2: the Kulen Mountain waterfall. I can also pick you up at the airport and take you to your hotel.",
         "note": "Driver and licensed guide in one. I am a fully qualified Siem Reap guide, so I can drive you AND guide you inside the temples.",
         "quote": "My favourite: one day temples, the next day the waterfall. I pick you up at the airport too.",
         "highlight": true,
         "price": "",
         "from": false,
-        "image": "/images/stock/banteay-srei.jpg",
-        "message": "Hi Mr Night, I would like your favourite 2-day trip: temples + waterfall, with airport pick-up. Dates: ___ People: ___ Hotel: ___",
+        "image": "/images/night/banteay-srei-guests.jpg",
+        "message": "Hi Mr Night, I would like your favourite 2-day trip: temples + Kulen waterfall, with airport pick-up. Dates: ___ People: ___ Hotel: ___",
         "show_luggage": false
       }
     ],
@@ -264,26 +265,140 @@
       ]
     }
   },
+  "destinations": {
+    "show": true,
+    "eyebrow": "Where we can go",
+    "heading": "Places I can take you",
+    "message": "Hi Mr Night, I would like to visit {place}. Can you help me plan it?",
+    "items": [
+      {
+        "name": "Angkor Wat",
+        "text": "The biggest temple in the world. Come for sunrise over the lotus ponds, or later in the day when it is quieter.",
+        "image": "/images/night/angkor-wat-pond-guests.jpg",
+        "stock": false
+      },
+      {
+        "name": "Angkor Thom and Bayon",
+        "text": "The old royal city and the Bayon temple, with more than 200 giant stone faces.",
+        "image": "/images/night/bayon-guests.jpg",
+        "stock": false
+      },
+      {
+        "name": "Ta Prohm",
+        "text": "The jungle temple, with huge tree roots growing over the walls.",
+        "image": "/images/night/ta-prohm-roots.jpg",
+        "stock": false
+      },
+      {
+        "name": "Banteay Srei",
+        "text": "The small pink temple with the finest carvings, about 40 minutes from town.",
+        "image": "/images/night/banteay-srei-guests.jpg",
+        "stock": false
+      },
+      {
+        "name": "Kulen Mountain waterfall",
+        "text": "The holy mountain: swim at the waterfall and see the river carvings and the big reclining Buddha.",
+        "image": "/images/stock/kulen-waterfall.jpg",
+        "stock": true
+      },
+      {
+        "name": "Beng Mealea",
+        "text": "A wild jungle temple, half fallen down and covered in trees, about 1.5 hours from Siem Reap.",
+        "image": "/images/stock/beng-mealea.jpg",
+        "stock": true
+      },
+      {
+        "name": "Tonle Sap floating village",
+        "text": "Houses on stilts and boats on the biggest lake in Southeast Asia.",
+        "image": "/images/stock/tonle-sap.jpg",
+        "stock": true
+      },
+      {
+        "name": "Golf",
+        "text": "Siem Reap has 3 championship courses: Angkor Golf Resort (a Nick Faldo design, about 10 minutes from town), Phokeethra Country Club (an Asian Tour venue, near Puok) and Siem Reap Booyoung Country Club (near Bakong). I drive you and your clubs there and back.",
+        "image": "/images/stock/golf-course.jpg",
+        "stock": true
+      },
+      {
+        "name": "Angkor Eye",
+        "text": "An 85 m Ferris wheel with air-conditioned cabins. Open 3 to 8 pm, best at sunset.",
+        "image": "/images/stock/angkor-eye.jpg",
+        "stock": true
+      },
+      {
+        "name": "Pub Street and the Night Market",
+        "text": "Food, drinks and shopping in the evening. I drop you off and pick you up.",
+        "image": "/images/stock/city-pubstreet.jpg",
+        "stock": true
+      }
+    ]
+  },
+  "places_eyebrow": "Photos from my trips",
+  "places_heading": "Out and about with my guests",
   "places": [
     {
-      "name": "Pub Street at night",
-      "image": "/images/stock/city-pubstreet.jpg"
+      "name": "Apsara dancers with my guests",
+      "image": "/images/night/apsara-dancers-guests.jpg"
     },
     {
-      "name": "Apsara dance show",
-      "image": "/images/stock/apsara.jpg"
+      "name": "Bayon temple with my guests",
+      "image": "/images/night/bayon-guests.jpg"
     },
     {
-      "name": "Tonle Sap lake",
-      "image": "/images/stock/tonle-sap.jpg"
+      "name": "The giant tree roots at Ta Prohm",
+      "image": "/images/night/ta-prohm-roots.jpg"
     },
     {
-      "name": "Old Market",
-      "image": "/images/stock/old-market.jpg"
+      "name": "A group day at the temples",
+      "image": "/images/night/angkor-naga-group.jpg"
     },
     {
-      "name": "Bayon faces",
-      "image": "/images/stock/bayon-bw.jpg"
+      "name": "Angkor Wat with my guests",
+      "image": "/images/night/angkor-wat-group-2.jpg"
+    },
+    {
+      "name": "At Angkor Wat with a guest",
+      "image": "/images/night/angkor-wat-guest.jpg"
+    },
+    {
+      "name": "A temple door in the tree roots",
+      "image": "/images/night/temple-tree-roots.jpg"
+    },
+    {
+      "name": "Old temple ruins outside town",
+      "image": "/images/night/temple-ruins-arches.jpg"
+    },
+    {
+      "name": "Naga on an ancient Khmer bridge",
+      "image": "/images/night/naga-bridge.jpg"
+    },
+    {
+      "name": "An ancient Khmer stone bridge",
+      "image": "/images/night/ancient-bridge-aerial.jpg"
+    },
+    {
+      "name": "Me at a jungle viewpoint",
+      "image": "/images/night/hilltop-viewpoint.jpg"
+    },
+    {
+      "name": "Hilltop views with my guests",
+      "image": "/images/night/hilltop-guests.jpg"
+    },
+    {
+      "name": "Local market snacks",
+      "image": "/images/night/market-snacks.jpg"
+    },
+    {
+      "name": "Hotel pick-up in Siem Reap",
+      "image": "/images/night/hotel-pickup-guests.jpg"
+    },
+    {
+      "name": "Angkor Wat with friends",
+      "image": "/images/night/angkor-wat-two-guests.jpg"
+    },
+    {
+      "name": "Me at Angkor Wat",
+      "image": "/images/night/angkor-wat-selfie.jpg"
     }
   ],
   "faq": [

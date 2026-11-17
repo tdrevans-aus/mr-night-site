@@ -52,7 +52,7 @@ Then open http://localhost:8000 . Add `?chat=open` to see the WhatsApp chat bubb
 
 - **Brand vs name:** `brand` in `site.json` ("Mr Night - Tour Guide") is the site name: logo text in the header and footer, `<title>`, `og:title`, `og:site_name`, `apple-mobile-web-app-title`, the WhatsApp widget name, the 404 page and the JSON-LD business name. `name` ("Mr Night") is his name in running text, buttons ("Message Mr Night on WhatsApp"), quotes and prefilled WhatsApp messages ("Hi Mr Night, ..."). The About heading is its own field ("Mr Night (Meun Reatrey)").
 
-- **Website address:** `base_url` in `site.json` (default `https://mrnight.pages.dev` is a **placeholder** – change it to the real address). It is used for the canonical link, `og:url`, the absolute `og:image`, `robots.txt` and `sitemap.xml`.
+- **Website address:** `base_url` in `site.json` (currently `https://mrnight-tourguide.pages.dev`, which is **provisional** until Night's own Cloudflare Pages project exists – it was unregistered on 17 Nov 2026; if the project ends up with a different address, change `base_url` and rebuild. Note: `mrnight.pages.dev` belongs to someone else, never use it). It is used for the canonical link, `og:url`, the absolute `og:image`, `robots.txt` and `sitemap.xml`.
 - **[Brackets] are notes, not content.** Any text in `[square brackets]` is removed when the page is built. If nothing meaningful is left, the field is hidden. Example: `"Mr Night [full name]"` shows as "Mr Night". A featured trip whose title is only a note (e.g. `"[waterfall, confirm: Kulen?]"`) shows its `fallback_title` instead ("Waterfall day").
 - **Prices:** an empty price shows "Message me for price". Never invent a price.
 - **Photos:** an empty photo field is left out of the page (no grey boxes, no "PHOTO:" labels); the layouts close up. `photos.headshot` is the round face photo (About heading, contact card, WhatsApp widget); `photos.night` is the big About photo. Photos in `images/night/` have resized WebP copies next to them (`name-800w.webp` etc.); `build.js` finds them and writes `<picture>` with a WebP `srcset` and the JPG as fallback. A photo uploaded later through Pages CMS without WebP copies just renders as a plain `<img>`.
@@ -71,7 +71,7 @@ Then open http://localhost:8000 . Add `?chat=open` to see the WhatsApp chat bubb
 - **Bangkok card:** the bus is Travel Mart's. `bangkok.tbc` shows a small "To be confirmed" note under the day plans and the Poipet steps until the details are checked against the brochure; switch it off when confirmed.
 - **Book now, pay later** shows only if both `show` and `confirmed` are on.
 - **WhatsApp:** every button opens `https://wa.me/<number>?text=<message>`, using `whatsapp` from `site.json`.
-- **Driver and guide:** Mr Night is a private driver **and** a fully qualified, licensed Siem Reap guide. Trip notes, the guide box and the FAQ say "Driver and licensed guide in one. I am a fully qualified Siem Reap guide, so I can drive you AND guide you inside the temples." The trust row and the About facts band show "Licensed Siem Reap guide".
+- **Driver and guide:** Mr Night is a private driver **and** a fully qualified, licensed Siem Reap guide. The full sentence "Driver and licensed guide in one. I am a fully qualified Siem Reap guide, so I can drive you and guide you inside the temples." appears once, in the guide box; the FAQ has a short version. Do not repeat it on the trip cards. The trust row and the About facts band show "Licensed Siem Reap guide".
 
 ## Handover to Mr Night (do these with him; all free)
 

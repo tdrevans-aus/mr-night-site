@@ -29,7 +29,7 @@
   if (q === 'open') toggle(true);
 
   /* Hide the bubble while it overlaps another button or link (small screens). */
-  var targets = Array.prototype.slice.call(document.querySelectorAll('main a, main summary, main label, footer a'));
+  var targets = Array.prototype.slice.call(document.querySelectorAll('main a, main button, main summary, main label, main .btn, footer a, footer button'));
   var ticking = false;
   function check() {
     ticking = false;
@@ -44,6 +44,8 @@
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(check); } }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
+  window.addEventListener('scrollend', check, { passive: true });
+  setInterval(function () { if (!document.hidden) check(); }, 400);
 })();
 
 /* Translate menu: loads Google's free Website Translator only when the header holds #tr.

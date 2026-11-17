@@ -67,14 +67,14 @@ function safeImg(u) {
   if (/^\/?[A-Za-z0-9_\-\/.]+\.(jpe?g|png|webp|gif|avif)$/i.test(u) && u.indexOf('..') === -1) return u.replace(/^\//, '');
   return '';
 }
-function baseUrl(C) { var b = safeUrl(C.base_url) || 'https://mrnight.pages.dev'; return b.replace(/\/+$/, '') + '/'; }
+function baseUrl(C) { var b = safeUrl(C.base_url) || 'https://mrnight-tourguide.pages.dev'; return b.replace(/\/+$/, '') + '/'; }
 
 var PHOTO_ALT = {
   night: 'Mr Night, private driver and licensed guide in Siem Reap',
   headshot: 'Mr Night',
   van_outside: 'Mr Night\u2019s Toyota Alphard luxury van',
   van_inside: 'Inside Mr Night\u2019s Toyota Alphard',
-  van_seats: 'Reclining massage seats in Mr Night\u2019s van',
+  van_seats: 'Comfortable reclining seats in Mr Night\u2019s van',
   van_about: 'Mr Night\u2019s white Toyota Alphard',
   guests: 'Mr Night with his guests'
 };
@@ -153,7 +153,7 @@ function render(raw, opts) {
   var title = T('seo.title', brandName + ' \u00b7 Private Luxury Van in Siem Reap');
   var desc = T('seo.description', name + ' \u2013 private luxury van with driver in Siem Reap, Cambodia.');
   var ogImg = BASE + 'images/og-image.jpg';
-  var head = '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
+  var head = '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n' +
     '<title>' + esc(title) + '</title>\n<meta name="description" content="' + esc(desc) + '">\n' +
     '<link rel="canonical" href="' + esc(BASE) + '">\n<meta name="theme-color" content="#10292c">\n' +
     '<meta property="og:type" content="website">\n<meta property="og:site_name" content="' + esc(brandName) + '">\n<meta name="apple-mobile-web-app-title" content="' + esc(brandName) + '">\n<meta name="application-name" content="' + esc(brandName) + '">\n' +
@@ -203,7 +203,7 @@ function render(raw, opts) {
   var bnpl = B.show === true && B.confirmed === true;
   var trust = [['i-van', 'Private ' + model, 'A luxury van just for you.'], ['seat', 'Reclining massage seats', 'Rest your legs between temples.'], ['drop', 'Cold water', 'Ready after every stop, with cool air-con.']];
   if (bnpl) trust.push(['card', 'Book now, pay later', T('book_now_pay_later.text', 'Pay on the day.')]);
-  trust.splice(2, 0, ['badge', 'Licensed Siem Reap guide', 'I can drive you and guide you inside the temples.']);
+  trust.splice(2, 0, ['badge', 'Licensed Siem Reap guide', '15+ years at the Angkor temples.']);
   trust.push(['tag', 'Price per van' + (capacity ? ', ' + capacity : ''), 'Not per person.']);
   out += '<section class="trust2" aria-label="Why book ' + esc(name) + '"><div class="wrap"><ul class="bar" style="--n:' + trust.length + '">' +
     trust.map(function (i) { return '<li class="it"><span class="ico" aria-hidden="true"><svg><use href="#' + i[0] + '"/></svg></span><span><strong class="h4">' + esc(i[1]) + '</strong><span class="it-p">' + esc(i[2]) + '</span></span></li>'; }).join('') +
@@ -261,7 +261,7 @@ function render(raw, opts) {
 
   /* ---------- the van ---------- */
   var feats = [['Room to stretch out', has(V.massage_seats) ? V.massage_seats : 'Rest between temples'], [Capacity || 'Room for your group', 'Room for bags too'], ['Strong air-con', 'Cool before you get in'], ['Cold water', 'After every stop']];
-  out += '<section class="sec dark" id="van" aria-labelledby="van-h"><div class="wrap comfort"><div class="cgal">' + photo('van_outside', '', '<span class="mcap">My Toyota Alphard at SAI airport</span>', '(max-width: 960px) 92vw, 280px') + photo('van_seats', '', '<span class="mcap">Inside: the massage seats</span>', '(max-width: 960px) 92vw, 280px') + photo('van_inside', '', '<span class="mcap">Inside the van</span>', '(max-width: 960px) 92vw, 280px') + '</div><div>' +
+  out += '<section class="sec dark" id="van" aria-labelledby="van-h"><div class="wrap comfort"><div class="cgal">' + photo('van_outside', '', '<span class="mcap">My Toyota Alphard at SAI airport</span>', '(max-width: 960px) 92vw, 280px') + photo('van_seats', '', '<span class="mcap">Inside: comfortable reclining seats</span>', '(max-width: 960px) 92vw, 280px') + photo('van_inside', '', '<span class="mcap">Inside the van</span>', '(max-width: 960px) 92vw, 280px') + '</div><div>' +
     '<p class="eyebrow">The van</p><h2 class="van-h" id="van-h">' + esc(T('van.heading', 'Travel in comfort')) + '</h2>' + (has(C.van && C.van.text) ? '<p class="van-p">' + rich(C.van.text) + '</p>' : '') +
     '<ul class="feats">' + feats.map(function (f) { return '<li><b>' + esc(f[0]) + '</b>' + esc(f[1]) + '</li>'; }).join('') + '</ul>' +
     (luggage ? '<p class="lug"><svg class="wa-ico" aria-hidden="true"><use href="#i-van"/></svg>' + rich(luggage) + '</p>' : '') +
@@ -319,7 +319,7 @@ function render(raw, opts) {
       (fiImg ? '<div class="pic ph has-img">' + pic(fiImg, 'Mr Night\u2019s Toyota Alphard at Siem Reap Angkor International Airport (SAI)', '(max-width: 960px) 92vw, 520px') + '</div>' : '') + '<div class="in">' +
       (has(FI.eyebrow) ? '<p class="eyebrow">' + esc(FI.eyebrow) + '</p>' : '') + '<h2 id="fly-h">' + esc(FI.heading) + '</h2>' +
       (has(fiText) ? '<p class="lead">' + rich(fiText) + '</p>' : '') + (FI.show_luggage === true && luggage ? '<p class="lug-s">' + rich(luggage) + '</p>' : '') +
-      '<div class="foot">' + waBtn('btn btn-wa', FI.message || 'Hi Mr Night, I am flying into Siem Reap (SAI). My flight number is: ___ . Date: ___ . Hotel: ___', esc(str(FI.button) || 'Send me your flight number')) + '</div></div></div></div></section>\n';
+      '<div class="foot">' + waBtn('btn btn-wa', FI.message || 'Hi Mr Night, I am flying into Siem Reap (SAI). My flight number is: ___. Date: ___. Hotel: ___', esc(str(FI.button) || 'Send me your flight number')) + '</div></div></div></div></section>\n';
   }
   if (showBkk) {
     var D = C.border || {};
@@ -401,7 +401,7 @@ function render(raw, opts) {
 
 function render404(raw) {
   var C = cleanAll(raw), name = str(C.brand) || str(C.name) || 'Mr Night', num = str(C.whatsapp).replace(/[^0-9]/g, '') || '85517843878';
-  return '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>Page not found \u00b7 ' + esc(name) + '</title>\n<meta name="robots" content="noindex">\n' +
+  return '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<title>Page not found \u00b7 ' + esc(name) + '</title>\n<meta name="robots" content="noindex">\n' +
     '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n<link rel="stylesheet" href="/css/style.css">\n</head>\n<body class="nf">\n<main class="nf-main"><div class="nf-card">' +
     '<a class="brand" href="/"><span class="moon" aria-hidden="true"></span><span><b>' + brandHtml(name) + '</b></span></a>' +
     '<h1>Sorry, this page is not here.</h1><p>The page you wanted does not exist. Go back to the home page, or message me on WhatsApp.</p>' +

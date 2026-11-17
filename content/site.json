@@ -1,5 +1,5 @@
 {
-  "base_url": "https://mrnight.pages.dev",
+  "base_url": "https://mrnight-tourguide.pages.dev",
   "brand": "Mr Night - Tour Guide",
   "name": "Mr Night",
   "full_name": "Meun Reatrey",
@@ -14,7 +14,7 @@
   "last_updated": "",
   "seo": {
     "title": "Mr Night - Tour Guide · Private Luxury Van in Siem Reap · Airport Pick-ups & Temple Days",
-    "description": "Mr Night (Meun Reatrey) is a private driver and licensed Siem Reap guide (15+ years' experience) with a Toyota Alphard luxury van with reclining massage seats. SAI airport pick-ups, temple days and city transfers in Siem Reap, Cambodia. Message on WhatsApp."
+    "description": "Mr Night (Meun Reatrey) is a private driver and licensed Siem Reap guide (15+ years' experience) with a Toyota Alphard luxury van with comfortable reclining seats. SAI airport pick-ups, temple days and city transfers in Siem Reap, Cambodia. Message on WhatsApp."
   },
   "vehicle": {
     "model": "Toyota Alphard",
@@ -63,7 +63,7 @@
         "fallback_title": "",
         "kicker": "🛕 Full day",
         "text": "One full day at Angkor Wat and the main temples, in my Toyota Alphard. Rest in the cool van between temples.",
-        "note": "Driver and licensed guide in one. I am a fully qualified Siem Reap guide, so I can drive you AND guide you inside the temples.",
+        "note": "I am your driver and your licensed guide, all day.",
         "quote": "",
         "highlight": false,
         "price": "",
@@ -73,7 +73,7 @@
         "show_luggage": false
       },
       {
-        "title": "Kulen Mountain waterfall",
+        "title": "Kulen Mountain waterfall (Phnom Kulen)",
         "fallback_title": "Waterfall day",
         "kicker": "🌿 About 1.5 hours away",
         "text": "A full day out to Phnom Kulen, the holy mountain, about 1.5 hours from Siem Reap. Swim at the waterfall, see the river carvings and the big reclining Buddha. Relax in the van on the way there and back.",
@@ -90,7 +90,7 @@
         "title": "Airport pick-up and transfers",
         "fallback_title": "",
         "kicker": "✈ SAI · about 50 km",
-        "text": "The new Siem Reap airport (SAI) is about 50 km from town, about 1 hour. I watch your flight and wait at arrivals with your name. Hotel and city transfers too.",
+        "text": "The new Siem Reap airport (SAI) is about 50 km from town, about 1 hour. I watch your flight and wait at arrivals with a name sign. Hotel and city transfers too.",
         "note": "",
         "quote": "",
         "highlight": false,
@@ -105,7 +105,7 @@
         "fallback_title": "",
         "kicker": "2 days",
         "text": "Day 1: Angkor Wat and the main temples. Day 2: the Kulen Mountain waterfall. I can also pick you up at the airport and take you to your hotel.",
-        "note": "Driver and licensed guide in one. I am a fully qualified Siem Reap guide, so I can drive you AND guide you inside the temples.",
+        "note": "",
         "quote": "My favourite: one day temples, the next day the waterfall. I pick you up at the airport too.",
         "highlight": true,
         "price": "",
@@ -124,7 +124,7 @@
       },
       {
         "name": "City transfer",
-        "details": "Hotel, restaurant, Phare circus, bus station",
+        "details": "Hotel, restaurant, Phare Circus, bus station",
         "price": "",
         "message": "Hi Mr Night, I need a city transfer. From: ___ To: ___ Time: ___"
       },
@@ -171,7 +171,7 @@
   "guide": {
     "show": true,
     "heading": "Driver and licensed guide in one.",
-    "text": "I am a fully qualified Siem Reap guide, so I can drive you AND guide you inside the temples."
+    "text": "I am a fully qualified Siem Reap guide, so I can drive you and guide you inside the temples."
   },
   "van": {
     "heading": "Travel in comfort, not in a hot taxi.",
@@ -180,7 +180,7 @@
   },
   "about": {
     "heading": "Mr Night (Meun Reatrey)",
-    "subheading": "Founder and Private Driver · 15+ years' experience as a guide in Siem Reap · Speaks English, Thai and Khmer",
+    "subheading": "Founder, Driver and Licensed Guide · 15+ years' experience as a guide in Siem Reap · Speaks English, Thai and Khmer",
     "story": [
       "My Cambodian name is Meun Reatrey. Reatrey means “night” in Khmer. My parents gave me this name because I was born at ten o'clock at night. So my guests call me Mr Night.",
       "I was born and grew up in Cambodia, and my family survived the Khmer Rouge years. As a young man I trained as a Buddhist monk, and it was my dream to become one. But my father died young, so I left the monastery to work and take care of my mother.",
@@ -207,7 +207,7 @@
     "text": "Most visitors now fly into the new Siem Reap Angkor International Airport (SAI), with direct flights from {flights}. I will meet you at arrivals with your name sign, help with your bags, and drive you the 50 km to your hotel in my Alphard.",
     "flights": "Bangkok, Hanoi, Ho Chi Minh City, Singapore, Kuala Lumpur and more",
     "button": "Send me your flight number",
-    "message": "Hi Mr Night, I am flying into Siem Reap (SAI). My flight number is: ___ . Date: ___ . Hotel: ___",
+    "message": "Hi Mr Night, I am flying into Siem Reap (SAI). My flight number is: ___. Date: ___. Hotel: ___",
     "image": "/images/night/van-sai-airport.jpg",
     "show_luggage": true
   },
@@ -296,7 +296,7 @@
         "stock": false
       },
       {
-        "name": "Kulen Mountain waterfall",
+        "name": "Kulen Mountain waterfall (Phnom Kulen)",
         "text": "The holy mountain: swim at the waterfall and see the river carvings and the big reclining Buddha.",
         "image": "/images/stock/kulen-waterfall.jpg",
         "stock": true
@@ -420,7 +420,7 @@
     },
     {
       "q": "Can you guide me inside the temples?",
-      "a": "Driver and licensed guide in one. I am a fully qualified Siem Reap guide, so I can drive you AND guide you inside the temples."
+      "a": "Yes. I am a licensed Siem Reap guide, so I can guide you inside the temples too."
     },
     {
       "q": "How do I book?",
@@ -428,7 +428,7 @@
     },
     {
       "q": "Do I need an Angkor Pass?",
-      "a": "Yes, you need an Angkor Pass to visit the temples. You can buy it online before you come at [angkorenterprise.gov.kh](https://www.angkorenterprise.gov.kh/), or no problem, I will take you to the official ticket office on the way. The pass is not included in the van price."
+      "a": "Yes, you need an Angkor Pass to visit the temples. You can buy it online before you come, at [angkorenterprise.gov.kh](https://www.angkorenterprise.gov.kh/). Or I can take you to the official ticket office on the way. The pass is not included in the van price."
     },
     {
       "q": "I'm in Bangkok. How do I get to Siem Reap?",

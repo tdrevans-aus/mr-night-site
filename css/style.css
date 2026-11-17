@@ -741,3 +741,11 @@ html,body{top:0!important;position:static!important}
 .dnote{margin:14px 0 0;font-size:14px}
 .dnote a{display:inline-block;padding:12px 0}
 @media (max-width:600px){.dgrid{grid-template-columns:1fr;gap:16px}}
+/* Floating WhatsApp bubble on phones: bottom-right, inside the safe area, smaller, and the page
+   gets bottom room so the last buttons and footer links are never under it. */
+@media (max-width:600px){
+  .jc{--btn:52px;--sep:14px;left:auto;right:calc(var(--sep) + env(safe-area-inset-right,0px));bottom:calc(var(--sep) + env(safe-area-inset-bottom,0px));transform-origin:right bottom}
+  .jc-box{left:auto;right:0;width:calc(100vw - 28px);transform-origin:right bottom}
+  .jc-ico svg{width:30px;height:30px}
+  body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+}

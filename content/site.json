@@ -221,7 +221,7 @@
     "days_3d": [
       {
         "title": "Bangkok → Poipet → Siem Reap",
-        "text": "Travel Mart bus picks you up at your Bangkok hotel at about 8:00 am. Poipet border at about 1:00 pm, then by road to Siem Reap. Hotel check-in and dinner at a local restaurant."
+        "text": "Travel Mart bus picks you up at your Bangkok hotel, then over the Poipet border and by road to Siem Reap. Hotel check-in and dinner at a local restaurant."
       },
       {
         "title": "Angkor temples with a guide",
@@ -229,13 +229,13 @@
       },
       {
         "title": "Siem Reap → Bangkok",
-        "text": "The Travel Mart bus leaves Siem Reap for Bangkok at about 8:00 am, via the Poipet border."
+        "text": "The Travel Mart bus takes you from Siem Reap to Bangkok, via the Poipet border."
       }
     ],
     "days_4d": [
       {
         "title": "Bangkok → Poipet → Siem Reap",
-        "text": "Travel Mart bus picks you up at your Bangkok hotel at about 8:00 am. Poipet border at about 1:00 pm, then by road to Siem Reap. Hotel check-in and dinner at a local restaurant."
+        "text": "Travel Mart bus picks you up at your Bangkok hotel, then over the Poipet border and by road to Siem Reap. Hotel check-in and dinner at a local restaurant."
       },
       {
         "title": "Angkor temples with a guide",
@@ -247,7 +247,7 @@
       },
       {
         "title": "Siem Reap → Bangkok",
-        "text": "The Travel Mart bus leaves Siem Reap for Bangkok at about 8:00 am."
+        "text": "The Travel Mart bus takes you from Siem Reap back to Bangkok."
       }
     ],
     "tbc": {

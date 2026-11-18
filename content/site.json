@@ -3,17 +3,17 @@
   "brand": "Mr Night - Tour Guide",
   "name": "Mr Night",
   "full_name": "Meun Reatrey",
-  "tagline": "Private Luxury Van · Siem Reap",
+  "tagline": "Private driver & licensed guide · Siem Reap",
   "whatsapp": "85517843878",
   "phone_display": "+855 17 843 878",
-  "email": "",
+  "email": "mrnighttourguide@gmail.com",
   "google_maps_url": "",
   "facebook_url": "",
   "reply_time": "",
   "currency": "US$",
   "last_updated": "",
   "seo": {
-    "title": "Mr Night - Tour Guide · Private Luxury Van in Siem Reap · Airport Pick-ups & Temple Days",
+    "title": "Mr Night - Tour Guide · Private Driver & Licensed Guide in Siem Reap · Airport Pick-ups & Temple Days",
     "description": "Mr Night (Meun Reatrey) is a private driver and licensed Siem Reap guide (15+ years' experience) with a Toyota Alphard luxury van with comfortable reclining seats. SAI airport pick-ups, temple days and city transfers in Siem Reap, Cambodia. Message on WhatsApp."
   },
   "vehicle": {
@@ -53,11 +53,11 @@
     "fly_note": "Flying from Bangkok? The flight is about 1 hour, and I can meet you at SAI airport."
   },
   "trips": {
-    "heading": "All trips and prices",
+    "heading": "All trips",
     "intro": "One simple price for the whole van, not per person. Fuel and cold water are always included.",
     "featured_eyebrow": "Featured trips",
     "featured_heading": "My favourite trips",
-    "featured_intro": "Every price is for the whole van, not per person.",
+    "featured_intro": "",
     "featured": [
       {
         "title": "Temple day",

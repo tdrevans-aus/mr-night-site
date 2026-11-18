@@ -162,7 +162,8 @@ function render(raw, opts) {
   }
 
   /* ---------- head ---------- */
-  var title = T('seo.title', brandName + ' \u00b7 Private Luxury Van in Siem Reap');
+  var email = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(str(C.email)) ? str(C.email) : '';
+  var title = T('seo.title', brandName + ' \u00b7 Private Driver & Licensed Guide in Siem Reap');
   var desc = T('seo.description', name + ' \u2013 private luxury van with driver in Siem Reap, Cambodia.');
   var ogImg = BASE + 'images/og-image.jpg';
   var head = '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n' +
@@ -172,7 +173,7 @@ function render(raw, opts) {
     '<meta property="og:url" content="' + esc(BASE) + '">\n<meta property="og:title" content="' + esc(title) + '">\n' +
     '<meta property="og:description" content="' + esc(desc) + '">\n<meta property="og:image" content="' + esc(ogImg) + '">\n' +
     '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n' +
-    '<meta property="og:image:alt" content="' + esc(brandName) + ', private luxury van in Siem Reap">\n' +
+    '<meta property="og:image:alt" content="' + esc(brandName) + ', private driver and licensed guide in Siem Reap">\n' +
     '<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:image" content="' + esc(ogImg) + '">\n' +
     '<link rel="icon" href="favicon.svg" type="image/svg+xml">\n<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">\n<link rel="apple-touch-icon" href="apple-touch-icon.png">\n' +
     '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
@@ -180,7 +181,7 @@ function render(raw, opts) {
     '<link rel="stylesheet" href="css/style.css">\n' +
     '<script type="application/ld+json">' + JSON.stringify({
       '@context': 'https://schema.org', '@type': 'LocalBusiness', name: brandName, alternateName: [name, str(C.full_name)].filter(function (x, i, a) { return x && x !== brandName && a.indexOf(x) === i; }), url: BASE, image: ogImg, description: desc,
-      telephone: '+' + num, address: { '@type': 'PostalAddress', addressLocality: 'Siem Reap', addressCountry: 'KH' }
+      telephone: '+' + num, email: email || undefined, address: { '@type': 'PostalAddress', addressLocality: 'Siem Reap', addressCountry: 'KH' }
     }).replace(/</g, '\\u003c') + '</script>\n</head>\n';
 
   var brand = function (style) {
@@ -209,7 +210,7 @@ function render(raw, opts) {
   if (hl && heroTitle.indexOf(esc(hl)) > -1) heroTitle = heroTitle.replace(esc(hl), '<em>' + esc(hl) + '</em>');
   var out = head + '<body>\n<a class="skip" href="#main">Skip to content</a>\n' + opts.icons +
     '<header class="top"><div class="wrap">' + brand() +
-    '<nav class="nav" aria-label="Main"><a href="#trips">Trips</a><a href="#transfers">Prices</a><a href="#van">The van</a><a href="#about">About me</a>' +
+    '<nav class="nav" aria-label="Main"><a href="#trips">Favourites</a><a href="#transfers">All trips</a><a href="#van">The van</a><a href="#about">About me</a>' +
     (showFly ? '<a href="#flying-in">Flying in</a>' : '') + (showBkk ? '<a href="#bangkok">From Bangkok</a>' : '') + '<a href="#faq">FAQ</a>' +
     translateMenu() + waBtn('btn btn-wa btn-sm', T('widget.message'), '<span translate="no" class="notranslate">WhatsApp</span>') + '</nav></div></header>\n<main id="main">\n';
 
@@ -240,7 +241,7 @@ function render(raw, opts) {
     var ph = img ? '<div class="photo ph has-img">' + pic(img, t, '(max-width: 760px) 92vw, 300px')
       : '<div class="photo nophoto" aria-hidden="true">';
     ph += '</div>';
-    return '<article class="fcard' + (hlc ? ' fcard-hl' : '') + '">' + ph + '<div class="body">' + (hlc ? '<span class="hl-tag">Most loved</span>' : '') + (has(f.kicker) ? '<p class="fkick">' + esc(f.kicker) + '</p>' : '') +
+    return '<article class="fcard' + (hlc ? ' fcard-hl' : '') + '">' + ph + '<div class="body">' + (hlc ? '<span class="hl-tag">My favourite</span>' : '') + (has(f.kicker) ? '<p class="fkick">' + esc(f.kicker) + '</p>' : '') +
       '<h3>' + esc(t) + '</h3>' + (has(f.quote) ? '<blockquote class="fq">\u201c' + esc(f.quote) + '\u201d<cite>\u2014 ' + esc(name) + '</cite></blockquote>' : '') +
       (has(f.text) ? '<p>' + rich(f.text) + '</p>' : '') + (has(f.note) ? '<p class="fnote">' + rich(f.note) + '</p>' : '') + (f.show_luggage === true && luggage ? '<p class="fnote lug-s">' + rich(luggage) + '</p>' : '') +
       '<div class="row">' + price(f.price, { from: f.from === true }) + waBtn('btn btn-wa btn-sm', f.message || ('Hi Mr Night, I would like: ' + t), has(f.price) ? 'Book' : 'Ask') + '</div></div></article>';
@@ -274,7 +275,7 @@ function render(raw, opts) {
   var note = (has(TR.included) ? '<span><b>Included:</b> ' + rich(TR.included) + '</span>' : '') + (has(TR.not_included) ? '<span><b>Not included:</b> ' + rich(TR.not_included) + '</span>' : '');
   var G = C.guide || {};
   out += '<section class="sec" id="transfers" aria-labelledby="transfers-h"><div class="wrap"><div class="sec-head"><p class="eyebrow">Airport, temples &amp; city</p>' +
-    '<h2 id="transfers-h">' + esc(T('trips.heading', 'All trips and prices')) + '</h2>' + (has(TR.intro) ? '<p>' + rich(TR.intro) + '</p>' : '') + '</div>' +
+    '<h2 id="transfers-h">' + esc(T('trips.heading', 'All trips')) + '</h2>' + (has(TR.intro) ? '<p>' + rich(TR.intro) + '</p>' : '') + '</div>' +
     (rows ? '<div class="ptable"><div class="h"><span>Trip</span><span>Price per van' + (capacity ? '<small>' + esc(capacity) + '</small>' : '') + '</span><span></span></div>' + rows + (note ? '<div class="pnote">' + note + '</div>' : '') + '</div>' : '') +
     (G.show === true && (has(G.heading) || has(G.text)) ? '<div class="guide"><span class="big" aria-hidden="true"><svg><use href="#badge"/></svg></span><div>' +
       (has(G.heading) ? '<h3>' + esc(G.heading) + '</h3>' : '') + '<p>' + rich(G.text) + '</p></div>' +
@@ -389,7 +390,8 @@ function render(raw, opts) {
   var maps = safeUrl(C.google_maps_url);
   out += '<section class="sec" id="contact" aria-labelledby="contact-h"><div class="wrap"><div class="contact"><div class="bg" aria-hidden="true"></div><div class="in"><div>' +
     '<p class="eyebrow">Book your trip</p><h2 id="contact-h">' + esc(T('contact.heading', 'Message ' + name)) + '</h2>' + (has(C.contact && C.contact.text) ? '<p>' + rich(C.contact.text) + '</p>' : '') +
-    waBtn('btn btn-wa', T('contact.message'), 'Message ' + esc(name) + ' on WhatsApp') + '<a class="num notranslate" translate="no" href="tel:+' + num + '">' + esc(phone) + '</a></div>' +
+    waBtn('btn btn-wa', T('contact.message'), 'Message ' + esc(name) + ' on WhatsApp') + '<a class="num notranslate" translate="no" href="tel:+' + num + '">' + esc(phone) + '</a>' +
+    (email ? '<a class="mail notranslate" translate="no" href="mailto:' + esc(email) + '">' + esc(email) + '</a>' : '') + '</div>' +
     '<div class="mapcard"><div class="map">' + opts.map + '</div><div class="body"><b>Siem Reap town &amp; SAI airport</b><small>Pick-up from any hotel in Siem Reap.</small>' +
     (maps ? '<a class="btn btn-line btn-sm" href="' + esc(maps) + '" target="_blank" rel="noopener noreferrer"><svg class="wa-ico" aria-hidden="true"><use href="#pin"/></svg>Open in Google Maps</a>' : '') + '</div></div></div></div></div></section>\n</main>\n';
 
@@ -397,11 +399,10 @@ function render(raw, opts) {
   var links = [];
   if (maps) links.push('<li><a href="' + esc(maps) + '" target="_blank" rel="noopener noreferrer">Google Maps</a></li>');
   if (safeUrl(C.facebook_url)) links.push('<li><a href="' + esc(safeUrl(C.facebook_url)) + '" target="_blank" rel="noopener noreferrer">Facebook</a></li>');
-  var email = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(str(C.email)) ? str(C.email) : '';
   out += '<footer><div class="wrap"><div class="cols"><div>' + brand('color:#fff') + '<p class="foot-about">Private luxury van with driver and licensed guide in Siem Reap, Cambodia. Airport pick-ups, temple days and city transfers.</p></div>' +
     '<div><h2 class="fh">Contact</h2><ul class="flinks"><li><a href="' + esc(wa('')) + '" target="_blank" rel="noopener noreferrer">WhatsApp ' + esc(phone) + '</a></li>' +
     (email ? '<li><a href="mailto:' + esc(email) + '">' + esc(email) + '</a></li>' : '') + links.join('') + '</ul></div>' +
-    '<div><h2 class="fh">Trips</h2><ul class="flinks"><li><a href="#trips">Featured trips</a></li><li><a href="#transfers">All prices</a></li><li><a href="#van">The van</a></li><li><a href="#faq">FAQ</a></li></ul></div></div>' +
+    '<div><h2 class="fh">Trips</h2><ul class="flinks"><li><a href="#trips">Featured trips</a></li><li><a href="#transfers">All trips</a></li><li><a href="#van">The van</a></li><li><a href="#faq">FAQ</a></li></ul></div></div>' +
     '<div class="disc"><p>' + esc(name) + ' is a private driver and licensed guide in Siem Reap, Cambodia.' + (has(C.last_updated) ? ' Last updated ' + esc(C.last_updated) + '.' : '') + '</p>' +
     '<p class="credit">Temple and place photos: Wikimedia Commons contributors, under Creative Commons licences. <a href="credits.html">Photo credits</a></p></div></div></footer>\n';
 

@@ -1,4 +1,4 @@
-# Mr Night - Tour Guide – website (private luxury van and licensed guide in Siem Reap)
+# Mr Night · Siem Reap Driver & Guide – website (private luxury van and licensed guide in Siem Reap)
 
 A free, one-page website for Mr Night (Meun Reatrey), a private driver and licensed guide in Siem Reap, Cambodia (Toyota Alphard with reclining massage seats).
 
@@ -35,6 +35,7 @@ images/             photos (Pages CMS uploads go here); images/stock/ = credited
 credits.html        photo credits page (published, linked in the footer)
 favicon.svg, favicon.ico, favicon-32.png, apple-touch-icon.png, images/og-image.jpg
 README.md, EDIT-GUIDE.md, CREDITS.md   documentation                        [not published]
+NIGHT-SETUP.md      helper scripts: Google profile call, WhatsApp Business texts, review request [not published]
 dist/               build output (not committed; Cloudflare builds it)
 ```
 
@@ -50,7 +51,7 @@ Then open http://localhost:8000 . Add `?chat=open` to see the WhatsApp chat bubb
 
 ## Rules built into the build
 
-- **Brand vs name:** `brand` in `site.json` ("Mr Night - Tour Guide") is the site name: logo text in the header and footer, `<title>`, `og:title`, `og:site_name`, `apple-mobile-web-app-title`, the WhatsApp widget name, the 404 page and the JSON-LD business name. `name` ("Mr Night") is his name in running text, buttons ("Message Mr Night on WhatsApp"), quotes and prefilled WhatsApp messages ("Hi Mr Night, ..."). The About heading is its own field ("Mr Night (Meun Reatrey)").
+- **Brand vs name:** `brand` in `site.json` ("Mr Night · Siem Reap Driver & Guide") is the site name: logo text in the header and footer (the part before " · " is the big logo text, the part after it the small line under it; `tagline` is only used if the brand has no " · "), `<title>`, `og:title`, `og:site_name`, `apple-mobile-web-app-title`, the WhatsApp widget name, the 404 page and the JSON-LD business name. `name` ("Mr Night") is his name in running text, buttons ("Message Mr Night on WhatsApp"), quotes and prefilled WhatsApp messages ("Hi Mr Night, ..."). The About heading is its own field ("Mr Night (Meun Reatrey)").
 
 - **Website address:** `base_url` in `site.json` (currently `https://mrnight-tourguide.pages.dev`, which is **provisional** until Night's own Cloudflare Pages project exists – it was unregistered on 17 Nov 2026; if the project ends up with a different address, change `base_url` and rebuild. Note: `mrnight.pages.dev` belongs to someone else, never use it). It is used for the canonical link, `og:url`, the absolute `og:image`, `robots.txt` and `sitemap.xml`.
 - **[Brackets] are notes, not content.** Any text in `[square brackets]` is removed when the page is built. If nothing meaningful is left, the field is hidden. Example: `"Mr Night [full name]"` shows as "Mr Night". A featured trip whose title is only a note (e.g. `"[waterfall, confirm: Kulen?]"`) shows its `fallback_title` instead ("Waterfall day").

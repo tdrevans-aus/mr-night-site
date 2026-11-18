@@ -65,7 +65,7 @@ Website addresses that start with `https://`, names like `example.com` and email
 ## 5. Change the website name
 
 1. Tap **My website** (the top of the form).
-2. **Website / brand name** is the name in the logo, the page title and the WhatsApp chat box. Now it is `Mr Night - Tour Guide`.
+2. **Website / brand name** is the name in the logo, the page title and the WhatsApp chat box. Now it is `Mr Night · Siem Reap Driver & Guide`. On Google Maps, use only **Mr Night** as the business name (Google does not allow extra words in the name).
 3. **My name in the text and messages** is how you are called in the text, for example `Mr Night`. Keep it short.
 4. Tap **Save**.
 

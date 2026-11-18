@@ -87,7 +87,7 @@ var LOGO = {
   booking: '<span class="logo bk" aria-hidden="true">B.</span>'
 };
 
-/* Brand text for the logo: keeps "Tour Guide" together when the name wraps on small screens. */
+/* Brand text for the logo: keeps "Siem Reap Driver & Guide" together when the name wraps on small screens. */
 function brandHtml(b) {
   var m = String(b).match(/^(.+?)\s+([-\u2013\u2014|\u00b7])\s+(.+)$/);
   if (!m) return esc(b);
@@ -184,9 +184,13 @@ function render(raw, opts) {
       telephone: '+' + num, email: email || undefined, address: { '@type': 'PostalAddress', addressLocality: 'Siem Reap', addressCountry: 'KH' }
     }).replace(/</g, '\\u003c') + '</script>\n</head>\n';
 
+  /* Logo text: "Mr Night · Siem Reap Driver & Guide" shows as "Mr Night" with "Siem Reap Driver & Guide" as the small line.
+     A brand without a separator shows whole, with the tagline as the small line. */
+  var brandParts = String(brandName).match(/^(.+?)\s+[-–—|·]\s+(.+)$/);
   var brand = function (style) {
-    return '<a class="brand" href="#top"' + (style ? ' style="' + style + '"' : '') + '><span class="moon" aria-hidden="true"></span><span><b class="notranslate" translate="no">' + brandHtml(brandName) + '</b>' +
-      (has(C.tagline) ? '<small>' + esc(C.tagline) + '</small>' : '') + '</span></a>';
+    var big = brandParts ? brandParts[1] : brandName, small = brandParts ? brandParts[2] : str(C.tagline);
+    return '<a class="brand" href="#top"' + (style ? ' style="' + style + '"' : '') + '><span class="moon" aria-hidden="true"></span><span><b class="notranslate" translate="no">' + esc(big) + '</b>' +
+      (small ? '<small>' + esc(small) + '</small>' : '') + '</span></a>';
   };
   var K = C.bangkok || {};
   var showBkk = K.show === true;
@@ -238,10 +242,10 @@ function render(raw, opts) {
     var t = has(f.title) ? str(f.title) : str(f.fallback_title);
     if (!t) return '';
     var img = safeImg(f.image), hlc = f.highlight === true;
-    var ph = img ? '<div class="photo ph has-img">' + pic(img, t, '(max-width: 760px) 92vw, 300px')
+    var ph = img ? '<div class="photo ph has-img">' + pic(img, t, (hlc || f.wide === true) ? '(max-width: 820px) 92vw, 600px' : '(max-width: 760px) 92vw, 300px')
       : '<div class="photo nophoto" aria-hidden="true">';
     ph += '</div>';
-    return '<article class="fcard' + (hlc ? ' fcard-hl' : '') + '">' + ph + '<div class="body">' + (hlc ? '<span class="hl-tag">My favourite</span>' : '') + (has(f.kicker) ? '<p class="fkick">' + esc(f.kicker) + '</p>' : '') +
+    return '<article class="fcard' + (hlc ? ' fcard-hl' : (f.wide === true ? ' fcard-wide' : '')) + '">' + ph + '<div class="body">' + (hlc ? '<span class="hl-tag">My favourite</span>' : '') + (has(f.kicker) ? '<p class="fkick">' + esc(f.kicker) + '</p>' : '') +
       '<h3>' + esc(t) + '</h3>' + (has(f.quote) ? '<blockquote class="fq">\u201c' + esc(f.quote) + '\u201d<cite>\u2014 ' + esc(name) + '</cite></blockquote>' : '') +
       (has(f.text) ? '<p>' + rich(f.text) + '</p>' : '') + (has(f.note) ? '<p class="fnote">' + rich(f.note) + '</p>' : '') + (f.show_luggage === true && luggage ? '<p class="fnote lug-s">' + rich(luggage) + '</p>' : '') +
       '<div class="row">' + price(f.price, { from: f.from === true }) + waBtn('btn btn-wa btn-sm', f.message || ('Hi Mr Night, I would like: ' + t), has(f.price) ? 'Book' : 'Ask') + '</div></div></article>';

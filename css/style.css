@@ -796,3 +796,9 @@ html,body{top:0!important;position:static!important}
 /* Khmer and Thai need a little more line height for stacked vowels */
 html[lang|=km] body,html[lang|=th] body{line-height:1.75}
 .tr select option{font-family:var(--sans)}
+/* hero photo pair: matched portrait frames, tops, bottoms and captions aligned */
+.hpair{grid-template-columns:1fr 1fr;align-items:start;max-width:560px}
+.hpair-one{grid-template-columns:1fr;max-width:340px}
+.hp-van,.hp-main{margin-bottom:0}
+.hp-main .hp-img,.hp-van .hp-img{aspect-ratio:4/5}
+@media (max-width:600px){.hp-van{margin-bottom:0}}

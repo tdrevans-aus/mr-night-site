@@ -128,6 +128,8 @@ content:
           - { name: show, label: "Show this box", type: boolean }
           - { name: heading, label: "Title", type: string }
           - { name: text, label: "Text", type: text }
+          - { name: licence_image, label: "Guide licence photo (empty = badge icon)", type: image }
+          - { name: licence_caption, label: "Caption under the text", type: string }
       - name: van
         label: "The van section"
         type: object

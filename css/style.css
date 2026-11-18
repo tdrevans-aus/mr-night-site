@@ -821,3 +821,11 @@ footer .brand small{display:block;max-width:100%;overflow-wrap:anywhere}
 .fcard-wide .photo{height:auto;min-height:300px;order:2}
 .fcard-wide .body{padding:30px 32px}
 @media (max-width:820px){.fcard-wide{grid-template-columns:1fr}.fcard-wide .photo{order:0;min-height:220px}.fcard-wide .body{padding:22px}}
+
+/* Guide licence card in the "driver and licensed guide" box */
+.guide .lic{margin:0;width:150px}
+.guide .lic a{display:block;border-radius:10px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.18);transform:rotate(-2deg);transition:transform .2s}
+.guide .lic a:hover,.guide .lic a:focus-visible{transform:rotate(0) scale(1.03)}
+.guide .limg{display:block;width:100%;height:auto;aspect-ratio:714/1106}
+.guide .lic-cap{margin-top:8px!important;font-size:13.5px!important}
+@media (max-width:820px){.guide .lic{width:min(200px,60vw);margin:0 auto 4px}}

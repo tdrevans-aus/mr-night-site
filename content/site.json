@@ -187,7 +187,9 @@
   "guide": {
     "show": true,
     "heading": "Driver and licensed guide in one.",
-    "text": "I am a fully qualified Siem Reap guide, so I can drive you and guide you inside the temples."
+    "text": "I am a fully qualified Siem Reap guide, licensed by Cambodia's Ministry of Tourism, so I can drive you and guide you inside the temples.",
+    "licence_image": "/images/licence/guide-licence.jpg",
+    "licence_caption": "My guide licence. Official name: Moeurn Chanreatrei. Valid to January 2028."
   },
   "van": {
     "heading": "Travel in comfort, not in a hot taxi.",
@@ -214,7 +216,7 @@
     "driving_since": "",
     "experience": "15+ years",
     "languages": "English, Thai, Khmer",
-    "licence": "Licensed Siem Reap guide"
+    "licence": "Ministry of Tourism"
   },
   "flying_in": {
     "show": true,

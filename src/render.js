@@ -278,11 +278,12 @@ function render(raw, opts) {
   }).join('');
   var note = (has(TR.included) ? '<span><b>Included:</b> ' + rich(TR.included) + '</span>' : '') + (has(TR.not_included) ? '<span><b>Not included:</b> ' + rich(TR.not_included) + '</span>' : '');
   var G = C.guide || {};
+  var licImg = safeImg(G.licence_image);
   out += '<section class="sec" id="transfers" aria-labelledby="transfers-h"><div class="wrap"><div class="sec-head"><p class="eyebrow">Airport, temples &amp; city</p>' +
     '<h2 id="transfers-h">' + esc(T('trips.heading', 'All trips')) + '</h2>' + (has(TR.intro) ? '<p>' + rich(TR.intro) + '</p>' : '') + '</div>' +
     (rows ? '<div class="ptable"><div class="h"><span>Trip</span><span>Price per van' + (capacity ? '<small>' + esc(capacity) + '</small>' : '') + '</span><span></span></div>' + rows + (note ? '<div class="pnote">' + note + '</div>' : '') + '</div>' : '') +
-    (G.show === true && (has(G.heading) || has(G.text)) ? '<div class="guide"><span class="big" aria-hidden="true"><svg><use href="#badge"/></svg></span><div>' +
-      (has(G.heading) ? '<h3>' + esc(G.heading) + '</h3>' : '') + '<p>' + rich(G.text) + '</p></div>' +
+    (G.show === true && (has(G.heading) || has(G.text)) ? '<div class="guide' + (licImg ? ' has-lic' : '') + '">' + (licImg ? '<figure class="lic"><a href="' + esc(licImg) + '" target="_blank" rel="noopener">' + pic(licImg, 'Tourist guide licence of ' + name + ' from the Cambodian Ministry of Tourism', '(max-width: 820px) 60vw, 180px', 'limg') + '</a></figure>' : '<span class="big" aria-hidden="true"><svg><use href="#badge"/></svg></span>') + '<div>' +
+      (has(G.heading) ? '<h3>' + esc(G.heading) + '</h3>' : '') + '<p>' + rich(G.text) + '</p>' + (licImg && has(G.licence_caption) ? '<p class="lic-cap">' + esc(G.licence_caption) + '</p>' : '') + '</div>' +
       waBtn('btn btn-line btn-sm', 'Hi Mr Night, I would like you to drive and guide me at the temples. Date: ___ People: ___', 'Book a guided day') + '</div>' : '') +
     '</div></section>\n';
 

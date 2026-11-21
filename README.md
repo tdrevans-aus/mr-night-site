@@ -35,6 +35,7 @@ images/             photos (Pages CMS uploads go here); images/stock/ = credited
 credits.html        photo credits page (published, linked in the footer)
 favicon.svg, favicon.ico, favicon-32.png, apple-touch-icon.png, images/og-image.jpg
 README.md, EDIT-GUIDE.md, CREDITS.md   documentation                        [not published]
+HANDOVER.md         start here: handover notes for the IT support company      [not published]
 NIGHT-SETUP.md      helper scripts: Google profile call, WhatsApp Business texts, review request [not published]
 dist/               build output (not committed; Cloudflare builds it)
 ```

@@ -79,7 +79,8 @@ var PHOTO_ALT = {
   guests2: 'Mr Night at Angkor Wat',
   guests: 'Mr Night with his guests'
 };
-var TR_NATIVE = { km: 'ភាសាខ្មែរ', th: 'ไทย', 'zh-CN': '中文 (简体)', ko: '한국어', fr: 'Français', ja: '日本語' };
+/* Translate menu labels: each language in its own script, then its English name. Add a line here when adding a language to translate.languages. */
+var TR_NATIVE = { km: 'ភាសាខ្មែរ · Khmer', th: 'ภาษาไทย · Thai', 'zh-CN': '中文 (简体) · Chinese', ko: '한국어 · Korean', fr: 'Français · French', ja: '日本語 · Japanese', vi: 'Tiếng Việt · Vietnamese', de: 'Deutsch · German', es: 'Español · Spanish', ru: 'Русский · Russian' };
 var NAMES = { tripadvisor: 'TripAdvisor', google: 'Google', getyourguide: 'GetYourGuide', booking: 'Booking.com' };
 var LOGO = {
   tripadvisor: '<span class="logo ta" aria-hidden="true"><span><i></i><i></i></span></span>',

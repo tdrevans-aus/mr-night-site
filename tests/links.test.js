@@ -53,4 +53,21 @@ t('built page: no plain-text URL or domain outside links, no <script> from conte
   var bare = text.match(/\bhttps?:\/\/\S+|\b(?:www\.)?(?:[a-z0-9-]+\.)+(?:com|org|net|info|io|co|uk|kh|th|gov|edu|travel|asia)\b/gi) || [];
   assert.deepStrictEqual(bare, [], 'plain-text addresses: ' + bare.join(', '));
 });
+t('js/site.js is valid JavaScript', function () {
+  new (require('vm').Script)(fs.readFileSync(path.join(__dirname, '../js/site.js'), 'utf8'), { filename: 'site.js' });
+});
+t('no Google Fonts or other external files load with the page; fonts are self-hosted', function () {
+  var site = JSON.parse(fs.readFileSync(path.join(__dirname, '../content/site.json'), 'utf8'));
+  var html = R.render(site, { icons: '', map: '' });
+  assert.ok(!/fonts\.googleapis|fonts\.gstatic|<script[^>]+src="https?:/.test(html));
+  (fs.readFileSync(path.join(__dirname, '../css/fonts.css'), 'utf8').match(/\.\.\/fonts\/[^)]+/g) || []).forEach(function (f) {
+    assert.ok(fs.existsSync(path.join(__dirname, '../css', f)), 'missing font ' + f);
+  });
+});
+t('privacy page and security header files are published', function () {
+  var site = JSON.parse(fs.readFileSync(path.join(__dirname, '../content/site.json'), 'utf8'));
+  assert.ok(R.render(site, { icons: '', map: '' }).indexOf('href="privacy.html"') !== -1);
+  assert.ok(R.renderPrivacy(site).indexOf('googtrans') !== -1);
+  ['.htaccess', '_headers'].forEach(function (f) { assert.ok(/Content-Security-Policy/.test(fs.readFileSync(path.join(__dirname, '..', f), 'utf8')), f); });
+});
 console.log(n + ' tests passed');

@@ -12,7 +12,7 @@ var OUT = path.join(ROOT, 'dist');
 var content = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/site.json'), 'utf8'));
 
 /* Only these files and folders are published. Docs, CMS config, build scripts and QA files stay private. */
-var PUBLISH = ['css', 'js', 'images', 'credits.html', 'favicon.svg', 'favicon.ico', 'favicon-32.png', 'apple-touch-icon.png'];
+var PUBLISH = ['css', 'js', 'images', 'fonts', 'credits.html', '.htaccess', '_headers', 'favicon.svg', 'favicon.ico', 'favicon-32.png', 'apple-touch-icon.png'];
 
 function rm(p) { if (fs.existsSync(p)) fs.rmSync(p, { recursive: true, force: true }); }
 function copy(src, dst) {
@@ -38,6 +38,7 @@ function variants(src) {
 }
 fs.writeFileSync(path.join(OUT, 'index.html'), R.render(content, { icons: icons, map: map, variants: variants }));
 fs.writeFileSync(path.join(OUT, '404.html'), R.render404(content));
+fs.writeFileSync(path.join(OUT, 'privacy.html'), R.renderPrivacy(content));
 
 var base = R.baseUrl(content);
 fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nAllow: /\n\nSitemap: ' + base + 'sitemap.xml\n');

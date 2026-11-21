@@ -79,6 +79,7 @@ var PHOTO_ALT = {
   guests2: 'Mr Night at Angkor Wat',
   guests: 'Mr Night with his guests'
 };
+var TR_NATIVE = { km: 'ភាសាខ្មែរ', th: 'ไทย', 'zh-CN': '中文 (简体)', ko: '한국어', fr: 'Français', ja: '日本語' };
 var NAMES = { tripadvisor: 'TripAdvisor', google: 'Google', getyourguide: 'GetYourGuide', booking: 'Booking.com' };
 var LOGO = {
   tripadvisor: '<span class="logo ta" aria-hidden="true"><span><i></i><i></i></span></span>',
@@ -135,13 +136,16 @@ function render(raw, opts) {
     if (!src) return '';
     return '<div class="' + (cls ? cls + ' ' : '') + 'ph has-img">' + pic(src, PHOTO_ALT[key], sizes) + (extra || '') + '</div>';
   }
-  /* Translate menu (Google Website Translator). Hidden until Google's script loads (site.js), so no-JS and blocked-script visitors see nothing. */
+  /* Translate menu: our own drop-down (site.js). Google Website Translator only loads after a visitor picks a language.
+     Hidden until site.js runs, so no-JS visitors see nothing. */
   var TRN = C.translate || {};
-  var trLangs = str(TRN.languages).replace(/\s+/g, '');
+  var trLangs = str(TRN.languages).replace(/s+/g, '');
   if (!/^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?(,[A-Za-z]{2,3}(-[A-Za-z]{2,4})?)*$/.test(trLangs)) trLangs = '';
   function translateMenu() {
     if (TRN.show !== true || !trLangs) return '';
-    return '<div class="tr notranslate" id="tr" translate="no" hidden data-langs="' + esc(trLangs) + '"><svg class="tr-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.8 12h18.4M12 2.8c2.6 2.6 3.9 5.6 3.9 9.2s-1.3 6.6-3.9 9.2M12 2.8C9.4 5.4 8.1 8.4 8.1 12s1.3 6.6 3.9 9.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="tr-lbl">EN</span><span class="sr">' + esc(str(TRN.label) || 'Translate this page') + '</span><div id="google_translate_element"></div></div>';
+    var opts = '<option value="">English</option>' + trLangs.split(',').map(function (l) { return '<option value="' + esc(l) + '" lang="' + esc(l) + '">' + esc(TR_NATIVE[l] || l) + '</option>'; }).join('');
+    return '<div class="tr notranslate" id="tr" translate="no" hidden><svg class="tr-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.8 12h18.4M12 2.8c2.6 2.6 3.9 5.6 3.9 9.2s-1.3 6.6-3.9 9.2M12 2.8C9.4 5.4 8.1 8.4 8.1 12s1.3 6.6 3.9 9.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="tr-lbl" aria-hidden="true">EN</span>' +
+      '<select class="tr-sel" aria-label="' + esc(str(TRN.label) || 'Translate this page') + '" data-langs="' + esc(trLangs) + '">' + opts + '</select><div id="google_translate_element" hidden></div></div>';
   }
   var headshot = safeImg(P.headshot) || safeImg(P.night);
   /* Photo with its caption BELOW the image (never on top of it). */
@@ -176,9 +180,8 @@ function render(raw, opts) {
     '<meta property="og:image:alt" content="' + esc(brandName) + ', private driver and licensed guide in Siem Reap">\n' +
     '<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:image" content="' + esc(ogImg) + '">\n' +
     '<link rel="icon" href="favicon.svg" type="image/svg+xml">\n<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">\n<link rel="apple-touch-icon" href="apple-touch-icon.png">\n' +
-    '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
-    '<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Khmer:wght@400;600;700&family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">\n' +
-    '<link rel="stylesheet" href="css/style.css">\n' +
+    '<link rel="preload" href="fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>\n<link rel="preload" href="fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>\n' +
+    '<link rel="stylesheet" href="css/fonts.css">\n<link rel="stylesheet" href="css/style.css">\n' +
     '<script type="application/ld+json">' + JSON.stringify({
       '@context': 'https://schema.org', '@type': 'LocalBusiness', name: brandName, alternateName: [name, str(C.full_name)].filter(function (x, i, a) { return x && x !== brandName && a.indexOf(x) === i; }), url: BASE, image: ogImg, description: desc,
       telephone: '+' + num, email: email || undefined, address: { '@type': 'PostalAddress', addressLocality: 'Siem Reap', addressCountry: 'KH' }
@@ -336,7 +339,6 @@ function render(raw, opts) {
     }
   }
 
-  /* ---------- coming from Bangkok ---------- */
   /* ---------- flying in (SAI airport) ---------- */
   if (showFly) {
     var flights = str(FI.flights), fiText = str(FI.text);
@@ -348,6 +350,7 @@ function render(raw, opts) {
       (has(fiText) ? '<p class="lead">' + rich(fiText) + '</p>' : '') + (FI.show_luggage === true && luggage ? '<p class="lug-s">' + rich(luggage) + '</p>' : '') +
       '<div class="foot">' + waBtn('btn btn-wa', FI.message || 'Hi Mr Night, I am flying into Siem Reap (SAI). My flight number is: ___. Date: ___. Hotel: ___', esc(str(FI.button) || 'Send me your flight number')) + '</div></div></div></div></section>\n';
   }
+  /* ---------- coming from Bangkok (off while the Thai land border is closed) ---------- */
   if (showBkk) {
     var D = C.border || {};
     var days = function (l) { return (l || []).filter(function (d) { return has(d.title); }).map(function (d, i) { return '<li data-d="' + (i + 1) + '"><b>' + esc(d.title) + '</b>' + (has(d.text) ? '<span>' + esc(d.text) + '</span>' : '') + '</li>'; }).join(''); };
@@ -409,7 +412,7 @@ function render(raw, opts) {
     (email ? '<li><a href="mailto:' + esc(email) + '">' + esc(email) + '</a></li>' : '') + links.join('') + '</ul></div>' +
     '<div><h2 class="fh">Trips</h2><ul class="flinks"><li><a href="#trips">Featured trips</a></li><li><a href="#transfers">All trips</a></li><li><a href="#van">The van</a></li><li><a href="#faq">FAQ</a></li></ul></div></div>' +
     '<div class="disc"><p>' + esc(name) + ' is a private driver and licensed guide in Siem Reap, Cambodia.' + (has(C.last_updated) ? ' Last updated ' + esc(C.last_updated) + '.' : '') + '</p>' +
-    '<p class="credit">Temple and place photos: Wikimedia Commons contributors, under Creative Commons licences. <a href="credits.html">Photo credits</a></p></div></div></footer>\n';
+    '<p class="credit">Temple and place photos: Wikimedia Commons contributors, under Creative Commons licences. <a href="credits.html">Photo credits</a> · <a href="privacy.html">Privacy</a></p></div></div></footer>\n';
 
   /* ---------- floating WhatsApp widget (needs JS; hidden without it) ---------- */
   var WG = C.widget || {};
@@ -435,4 +438,27 @@ function render404(raw) {
     '<p class="nf-ctas"><a class="btn btn-wa" href="https://wa.me/' + num + '" target="_blank" rel="noopener noreferrer">Message ' + esc(str(C.name) || 'Mr Night') + ' on WhatsApp</a> <a class="btn btn-line" href="/">Home page</a></p></div></main>\n</body>\n</html>\n';
 }
 
-module.exports = { rich: rich, render: render, render404: render404, clean: clean, cleanAll: cleanAll, baseUrl: baseUrl };
+/* Privacy notice (privacy.html). Built from site.json so the name and contact details always match the main page. */
+function renderPrivacy(raw) {
+  var C = cleanAll(raw), name = str(C.name) || 'Mr Night', full = str(C.full_name);
+  var num = str(C.whatsapp).replace(/[^0-9]/g, '') || '85517843878', phone = str(C.phone_display) || '+' + num;
+  var email = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(str(C.email)) ? str(C.email) : '';
+  var updated = str(C.privacy_updated) || '21 November 2026';
+  var ext = function (href, label) { return '<a href="' + href + '" target="_blank" rel="noopener noreferrer">' + label + '</a>'; };
+  var contact = ext('https://wa.me/' + num, 'WhatsApp ' + esc(phone)) + (email ? ' or <a href="mailto:' + esc(email) + '">' + esc(email) + '</a>' : '');
+  return '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>Privacy · ' + esc(name) + '</title>\n' +
+    '<meta name="description" content="How the ' + esc(name) + ' website handles your information.">\n<link rel="icon" href="favicon.svg" type="image/svg+xml">\n' +
+    '<style>body{font-family:system-ui,sans-serif;max-width:760px;margin:0 auto;padding:28px 18px;line-height:1.6;color:#10292c;background:#f7f0e4}a{color:#b4532a}h2{font-size:1.15rem;margin:1.8em 0 .4em}</style>\n</head>\n<body>\n' +
+    '<p><a href="./">← Back to ' + esc(name) + '</a></p><h1>Privacy</h1>' +
+    '<p>This website belongs to ' + esc(name) + (full ? ' (' + esc(full) + ')' : '') + ', a private driver and licensed guide in Siem Reap, Cambodia. This page explains, in plain words, what happens to your information.</p>' +
+    '<h2>What this website collects</h2><p>Nothing. There are no forms, no accounts, no advertising and no visitor tracking or analytics. The website does not set any cookies of its own.</p>' +
+    '<h2>When you message me</h2><p>The WhatsApp buttons open WhatsApp with a message ready for you. Nothing is sent until you press send. WhatsApp chats are handled by WhatsApp (Meta) under ' + ext('https://www.whatsapp.com/legal/privacy-policy', 'WhatsApp’s privacy policy') + '. Email and phone calls go through your own email or phone provider.</p>' +
+    '<p>I use what you send me, such as your name, dates, hotel and flight number, only to answer you and to plan and run your trip. I do not sell it, and I only share it when your trip needs it (for example, a booking you ask me to make).</p>' +
+    '<h2>Translating the page</h2><p>If you choose a language from the translate menu, the page uses Google Translate. The page text is sent to Google to be translated, and a small cookie called “googtrans” is stored in your browser to remember your language. Choose English in the menu to turn it off and remove the cookie. If you never use the menu, nothing is sent to Google. See ' + ext('https://policies.google.com/privacy', 'Google’s privacy policy') + '.</p>' +
+    '<h2>Website hosting</h2><p>Like almost every website, the company that hosts this site may keep standard server logs (such as IP address, browser type and the pages requested) for a short time, to keep the site running and secure.</p>' +
+    '<h2>Other websites</h2><p>Links to other sites, such as Google Maps, Facebook or review sites, take you to those sites. They have their own privacy policies.</p>' +
+    '<h2>Your choices</h2><p>You can ask me what information I have from our messages, or ask me to delete it, at any time: ' + contact + '.</p>' +
+    '<p><small>Last updated ' + esc(updated) + '.</small></p>\n</body>\n</html>\n';
+}
+
+module.exports = { rich: rich, render: render, render404: render404, renderPrivacy: renderPrivacy, clean: clean, cleanAll: cleanAll, baseUrl: baseUrl };

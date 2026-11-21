@@ -1,0 +1,37 @@
+# Security, HTTPS and caching settings for ordinary cPanel/Apache hosting (copied into dist/ by build.js).
+# Cloudflare Pages / Netlify use _headers instead; keep the two files in step.
+# Upload this file together with the rest of dist/ (it starts with a dot, so it may be hidden on your computer).
+
+ErrorDocument 404 /404.html
+Options -Indexes
+
+# Send every visitor to https:// (only switch this on once the SSL certificate is working).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Don't serve hidden files (other than this one, which Apache already protects).
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" "expr=%{HTTPS} == 'on'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://www.gstatic.com https://translate.googleapis.com; img-src 'self' data: https://www.gstatic.com https://translate.google.com https://translate.googleapis.com https://fonts.gstatic.com; font-src 'self'; connect-src 'self' https://translate.googleapis.com https://translate-pa.googleapis.com; frame-src https://www.tripadvisor.com; frame-ancestors 'none'; base-uri 'self'; form-action 'none'; object-src 'none'; upgrade-insecure-requests"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+</IfModule>

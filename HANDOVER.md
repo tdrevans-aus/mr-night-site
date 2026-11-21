@@ -22,8 +22,8 @@ A one-page website for **Mr Night** (official name on his guide licence: Moeurn 
 ## First jobs for you
 
 1. **Hosting.** Put the site on your hosting, ideally on an account in Mr Night's name (see the README's "Handover to Mr Night").
-2. **Set the real address.** Change `base_url` in `content/site.json` to the final address and rebuild. It's currently a placeholder (`https://mrnight-tourguide.pages.dev`). The canonical link, link previews, `robots.txt` and `sitemap.xml` all use it.
-3. **Domain (optional).** For example `mrnightsiemreap.com`, registered in Mr Night's name.
+2. **Domain.** Mr Night has chosen **mrnighttourguide.com**. Please register it in his name.
+3. **Address.** `base_url` in `content/site.json` is already set to `https://mrnighttourguide.com`. If the final address ends up different, change it and rebuild. The canonical link, link previews, `robots.txt` and `sitemap.xml` all use it.
 4. **Google Business Profile.** Mr Night has step-by-step instructions (from `NIGHT-SETUP.md` section A) and may have started already, so check with him before creating a new profile.
    - The business name must be just **Mr Night**. Google doesn't allow extra words in the name.
    - It's a **service-area business** (Siem Reap), with no address shown.
@@ -31,9 +31,13 @@ A one-page website for **Mr Night** (official name on his guide licence: Moeurn 
 5. **TripAdvisor and similar listings.** The site has badge slots for TripAdvisor, GetYourGuide and Booking.com in `reviews`. Switch each one on only when the listing has real reviews.
 6. **WhatsApp Business.** Ready-made greeting, away and quick-reply texts and catalogue items are in `NIGHT-SETUP.md` section B. The review-request message is in section C.
 
+## Latest additions (21 Nov 2026)
+
+- **Battambang day trip.** It's a featured trip, an "All trips" line and a "Places I can take you" card, and there are 4 gallery photos. All the photos Mr Night sent for it are in `images/night/battambang-*.jpg`, including some that aren't used yet.
+
 ## Still needed from Mr Night
 
-- **Prices.** Every trip currently says "Message me for price", which costs bookings. Get a "from" price per van for: the airport pick-up, a temple day, Kulen and golf. Put them in the `price` fields. **Never invent prices.**
+- **Prices.** Every trip currently says "Message me for price", which costs bookings. Get a "from" price per van for: the airport pick-up, a temple day, Kulen and golf. Put them in the `price` fields. **Never invent prices.** He was asked on 21 Nov 2026 whether he wants prices shown, and hasn't answered yet.
 - **Name spelling in his story.** The site says "Meun Reatrey" but his licence says "Moeurn Chanreatrei". Ask which he prefers. The licence caption already shows the official spelling.
 - The other open items are under "Things still to get" in the README.
 

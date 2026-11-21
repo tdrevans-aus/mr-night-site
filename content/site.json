@@ -1,5 +1,5 @@
 {
-  "base_url": "https://mrnight-tourguide.pages.dev",
+  "base_url": "https://mrnighttourguide.com",
   "brand": "Mr Night · Siem Reap Driver & Guide",
   "name": "Mr Night",
   "full_name": "Meun Reatrey",
@@ -116,6 +116,21 @@
         "show_luggage": false
       },
       {
+        "title": "Battambang day trip",
+        "fallback_title": "",
+        "kicker": "🚂 Full day · about 3 hours away",
+        "text": "We leave Siem Reap at 8, after breakfast. On the way we visit local families making rice wine, rice paper and bamboo sticky rice. After lunch: a city tour, a ride on the famous bamboo train, Phnom Sampov mountain, the Killing Caves and the Bat Caves.",
+        "note": "I lived in Battambang when I was a monk, so this trip is special to me.",
+        "quote": "",
+        "highlight": false,
+        "price": "",
+        "from": false,
+        "image": "/images/night/battambang-bamboo-train-ride.jpg",
+        "message": "Hi Mr Night, I would like the Battambang day trip. Date: ___ People: ___ Hotel: ___",
+        "show_luggage": false,
+        "wide": true
+      },
+      {
         "title": "Golf days",
         "fallback_title": "",
         "kicker": "⛳ 3 championship courses",
@@ -179,6 +194,12 @@
         "details": "Half day · boat ticket not included",
         "price": "",
         "message": "Hi Mr Night, I would like to visit Tonle Sap floating village. Date: ___ People: ___"
+      },
+      {
+        "name": "Battambang day trip",
+        "details": "Bamboo train, Phnom Sampov, Killing Caves, Bat Caves · about 3 hours each way",
+        "price": "",
+        "message": "Hi Mr Night, I would like the Battambang day trip. Date: ___ People: ___ Hotel: ___"
       }
     ],
     "included": "Van, driver, fuel, cold water.",
@@ -343,6 +364,11 @@
         "name": "Pub Street and the Night Market",
         "text": "Food, drinks and shopping in the evening. I drop you off and pick you up.",
         "image": "/images/stock/city-pubstreet.jpg"
+      },
+      {
+        "name": "Battambang",
+        "text": "A quiet old river town about 3 hours from Siem Reap: the bamboo train, Phnom Sampov mountain and the Bat Caves. I lived there when I was a monk.",
+        "image": "/images/night/battambang-bamboo-train-carts.jpg"
       }
     ]
   },
@@ -392,6 +418,22 @@
     {
       "name": "Angkor Wat with friends",
       "image": "/images/night/angkor-wat-two-guests.jpg"
+    },
+    {
+      "name": "The bamboo train in Battambang",
+      "image": "/images/night/battambang-bamboo-train-group.jpg"
+    },
+    {
+      "name": "Making rice paper by hand",
+      "image": "/images/night/battambang-rice-paper-guests.jpg"
+    },
+    {
+      "name": "Bamboo sticky rice on the road to Battambang",
+      "image": "/images/night/battambang-bamboo-rice-family.jpg"
+    },
+    {
+      "name": "Rice paper drying in the sun",
+      "image": "/images/night/battambang-rice-paper-drying.jpg"
     },
     {
       "name": "Out on the golf course",

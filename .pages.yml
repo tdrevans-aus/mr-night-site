@@ -16,7 +16,7 @@ content:
     path: content/site.json
     format: json
     fields:
-      - { name: base_url, label: "Website address (PLACEHOLDER – change to the real address, e.g. https://mrnight-tourguide.pages.dev)", type: string, pattern: { regex: "^https://[^\\s]+$", message: "Must start with https://" } }
+      - { name: base_url, label: "Website address (e.g. https://mrnighttourguide.com)", type: string, pattern: { regex: "^https://[^\\s]+$", message: "Must start with https://" } }
       - { name: brand, label: "Website / brand name (logo, page title, WhatsApp chat box), e.g. Mr Night · Siem Reap Driver & Guide", type: string }
       - { name: name, label: "My name in the text and messages (e.g. Mr Night)", type: string }
       - { name: full_name, label: "My full Cambodian name (used for Google search info)", type: string }

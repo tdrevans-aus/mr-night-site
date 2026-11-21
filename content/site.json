@@ -116,17 +116,17 @@
         "show_luggage": false
       },
       {
-        "title": "Battambang day trip",
+        "title": "Battambang and the bamboo train",
         "fallback_title": "",
-        "kicker": "🚂 Full day · about 3 hours away",
-        "text": "We leave Siem Reap at 8, after breakfast. On the way we visit local families making rice wine, rice paper and bamboo sticky rice. After lunch: a city tour, a ride on the famous bamboo train, Phnom Sampov mountain, the Killing Caves and the Bat Caves.",
+        "kicker": "🚂 Full day trip",
+        "text": "Ride Battambang’s famous bamboo train: a bamboo platform on wheels that rattles along the old railway through the rice fields. On the way, we stop to see rice wine, rice paper and bamboo sticky rice being made. After lunch: a city tour, Phnom Sampov mountain and the Killing Caves, and the Bat Caves, where millions of bats fly out at sunset. It is a long day, so relax in my cool van on the way.",
         "note": "I lived in Battambang when I was a monk, so this trip is special to me.",
         "quote": "",
         "highlight": false,
         "price": "",
         "from": false,
-        "image": "/images/night/battambang-bamboo-train-ride.jpg",
-        "message": "Hi Mr Night, I would like the Battambang day trip. Date: ___ People: ___ Hotel: ___",
+        "image": "/images/night/battambang-bamboo-train-close.jpg",
+        "message": "Hi Mr Night, I would like the Battambang bamboo train day trip. Date: ___ People: ___ Hotel: ___",
         "show_luggage": false,
         "wide": true
       },
@@ -196,10 +196,10 @@
         "message": "Hi Mr Night, I would like to visit Tonle Sap floating village. Date: ___ People: ___"
       },
       {
-        "name": "Battambang day trip",
-        "details": "Bamboo train, Phnom Sampov, Killing Caves, Bat Caves · about 3 hours each way",
+        "name": "Battambang and the bamboo train",
+        "details": "Bamboo train, Phnom Sampov, Killing Caves, Bat Caves · full day",
         "price": "",
-        "message": "Hi Mr Night, I would like the Battambang day trip. Date: ___ People: ___ Hotel: ___"
+        "message": "Hi Mr Night, I would like the Battambang bamboo train day trip. Date: ___ People: ___ Hotel: ___"
       }
     ],
     "included": "Van, driver, fuel, cold water.",
@@ -367,8 +367,8 @@
       },
       {
         "name": "Battambang",
-        "text": "A quiet old river town about 3 hours from Siem Reap: the bamboo train, Phnom Sampov mountain and the Bat Caves. I lived there when I was a monk.",
-        "image": "/images/night/battambang-bamboo-train-carts.jpg"
+        "text": "Ride the famous bamboo train, climb Phnom Sampov and watch millions of bats fly out of the caves at sunset. I lived there when I was a monk.",
+        "image": "/images/night/battambang-bamboo-train-group.jpg"
       }
     ]
   },
@@ -420,8 +420,8 @@
       "image": "/images/night/angkor-wat-two-guests.jpg"
     },
     {
-      "name": "The bamboo train in Battambang",
-      "image": "/images/night/battambang-bamboo-train-group.jpg"
+      "name": "Riding the bamboo train through the rice fields",
+      "image": "/images/night/battambang-bamboo-train-ride.jpg"
     },
     {
       "name": "Making rice paper by hand",

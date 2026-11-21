@@ -9,7 +9,7 @@
   "email": "mrnighttourguide@gmail.com",
   "google_maps_url": "",
   "facebook_url": "",
-  "reply_time": "",
+  "reply_time": "2 hours",
   "currency": "US$",
   "last_updated": "",
   "seo": {
@@ -135,7 +135,7 @@
         "fallback_title": "",
         "kicker": "⛳ 3 championship courses",
         "text": "Siem Reap has 3 championship courses: Angkor Golf Resort (a Nick Faldo design, about 10 minutes from town), Phokeethra Country Club (an Asian Tour venue, near Puok) and Siem Reap Booyoung Country Club (near Bakong). I drive you and your clubs there and back.",
-        "note": "Tell me how many players and golf bags, and I will make sure they all fit.",
+        "note": "My van fits 4 players and 4 golf bags.",
         "quote": "",
         "highlight": false,
         "price": "",
@@ -464,6 +464,18 @@
     {
       "q": "How do I book?",
       "a": "It is easy. Send me a WhatsApp message with your dates, how many people and your hotel. I will reply with the price."
+    },
+    {
+      "q": "Do you speak Chinese or Korean?",
+      "a": "I speak English, Thai and Khmer. Chinese, Korean and other guests are very welcome: write to me on WhatsApp in your own language, and I will reply using a translation app."
+    },
+    {
+      "q": "What if my flight is late?",
+      "a": "No problem, and no extra charge. Send me your flight number and I will watch your flight. If it is late, I wait for you at arrivals with your name sign. If your flight is cancelled or changed, message me the new time and I will be there."
+    },
+    {
+      "q": "What if I need to cancel?",
+      "a": "You pay on the day, after your trip, so there is no deposit to lose. If your plans change, please message me as early as you can, at least 24 hours before if possible, so I can give the day to another guest."
     },
     {
       "q": "Do I need an Angkor Pass?",

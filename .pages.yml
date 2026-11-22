@@ -105,6 +105,7 @@ content:
               - { name: show_luggage, label: "Show the luggage note on this card", type: boolean }
               - { name: price, label: "Price per van (numbers only; empty = 'Message me for price')", type: string }
               - { name: from, label: "Show 'from' before the price", type: boolean }
+              - { name: per, label: "Words after the price (empty = per van), e.g. one way, per van", type: string }
               - { name: image, label: "Photo", type: image }
               - { name: message, label: "WhatsApp message", type: text }
           - { name: heading, label: "Price table – title", type: string }

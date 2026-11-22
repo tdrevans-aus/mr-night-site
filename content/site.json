@@ -67,7 +67,7 @@
         "note": "I am your driver and your licensed guide, all day.",
         "quote": "",
         "highlight": false,
-        "price": "",
+        "price": "80",
         "from": false,
         "image": "/images/night/angkor-wat-pond-guests.jpg",
         "message": "Hi Mr Night, I would like the Temple day (Angkor Wat and the main temples). Date: ___ People: ___ Hotel: ___",
@@ -81,7 +81,7 @@
         "note": "Kulen has its own entry ticket, paid on the day.",
         "quote": "",
         "highlight": false,
-        "price": "",
+        "price": "110",
         "from": false,
         "image": "/images/stock/kulen-waterfall.jpg",
         "message": "Hi Mr Night, I would like the Kulen Mountain waterfall day trip. Date: ___ People: ___ Hotel: ___",
@@ -91,29 +91,31 @@
         "title": "Airport pick-up and transfers",
         "fallback_title": "",
         "kicker": "✈ SAI · about 50 km",
-        "text": "The new Siem Reap airport (SAI) is about 50 km from town, about 1 hour. I watch your flight and wait at arrivals with a name sign. Hotel and city transfers too.",
+        "text": "The new Siem Reap airport (SAI) is about 50 km from town, about 1 hour. I watch your flight and wait at arrivals with a name sign. US$30 one way, airport to your hotel or hotel to the airport.",
         "note": "",
         "quote": "",
         "highlight": false,
-        "price": "",
+        "price": "30",
         "from": false,
         "image": "/images/night/airport-arrivals-group.jpg",
         "message": "Hi Mr Night, I need an airport pick-up / transfer (SAI). Flight number: ___ Date: ___ People: ___ Hotel: ___",
-        "show_luggage": true
+        "show_luggage": true,
+        "per": "one way, per van"
       },
       {
         "title": "Mr Night's favourite: 2 days, temples + Kulen waterfall",
         "fallback_title": "",
         "kicker": "2 days",
-        "text": "Day 1: Angkor Wat and the main temples. Day 2: the Kulen Mountain waterfall. I can also pick you up at the airport and take you to your hotel.",
+        "text": "Day 1 (US$80): Angkor Wat, Banteay Kdei, Ta Prohm, Angkor Thom and the Bayon, and the Killing Fields memorial. Day 2 (US$110): the Kulen Mountain waterfall, a butterfly garden and a landmine museum. Airport pick-up is extra: US$30 one way.",
         "note": "",
-        "quote": "My favourite: one day temples, the next day the waterfall. I pick you up at the airport too.",
+        "quote": "My favourite: one day for the temples, the next day for the holy mountain and the waterfall.",
         "highlight": true,
-        "price": "",
+        "price": "190",
         "from": false,
         "image": "/images/night/angkor-naga-group.jpg",
-        "message": "Hi Mr Night, I would like your favourite 2-day trip: temples + Kulen waterfall, with airport pick-up. Dates: ___ People: ___ Hotel: ___",
-        "show_luggage": false
+        "message": "Hi Mr Night, I would like your favourite 2-day trip: temples + Kulen waterfall. Dates: ___ People: ___ Hotel: ___ Airport pick-up: yes / no",
+        "show_luggage": false,
+        "per": "2 days, per van"
       },
       {
         "title": "Battambang and the bamboo train",
@@ -123,7 +125,7 @@
         "note": "I lived in Battambang when I was a monk, so this trip is special to me.",
         "quote": "",
         "highlight": false,
-        "price": "",
+        "price": "150",
         "from": false,
         "image": "/images/night/battambang-bamboo-train-close.jpg",
         "message": "Hi Mr Night, I would like the Battambang bamboo train day trip. Date: ___ People: ___ Hotel: ___",
@@ -149,8 +151,8 @@
     "list": [
       {
         "name": "Airport SAI ↔ hotel",
-        "details": "About 50 km, about 1 hour · name sign included",
-        "price": "",
+        "details": "One way · about 50 km, about 1 hour · name sign included",
+        "price": "30",
         "message": "Hi Mr Night, I need an airport transfer between SAI and my hotel. Flight: ___ Date: ___ People: ___"
       },
       {
@@ -162,7 +164,7 @@
       {
         "name": "Small circuit",
         "details": "Angkor Wat, Angkor Thom, Bayon, Ta Prohm",
-        "price": "",
+        "price": "80",
         "message": "Hi Mr Night, I would like the Small circuit in your van. Date: ___ People: ___"
       },
       {
@@ -184,10 +186,16 @@
         "message": "Hi Mr Night, I would like Banteay Srei and the far temples. Date: ___ People: ___"
       },
       {
-        "name": "Kulen Mountain or Beng Mealea",
+        "name": "Kulen Mountain waterfall",
+        "details": "Full day out of town · Kulen ticket not included",
+        "price": "110",
+        "message": "Hi Mr Night, I would like the Kulen Mountain waterfall day trip. Date: ___ People: ___"
+      },
+      {
+        "name": "Beng Mealea",
         "details": "Full day out of town",
         "price": "",
-        "message": "Hi Mr Night, I would like a day trip to Kulen Mountain / Beng Mealea. Date: ___ People: ___"
+        "message": "Hi Mr Night, I would like a day trip to Beng Mealea. Date: ___ People: ___"
       },
       {
         "name": "Tonle Sap floating village",
@@ -198,7 +206,7 @@
       {
         "name": "Battambang and the bamboo train",
         "details": "Bamboo train, Phnom Sampov, Killing Caves, Bat Caves · full day",
-        "price": "",
+        "price": "150",
         "message": "Hi Mr Night, I would like the Battambang bamboo train day trip. Date: ___ People: ___ Hotel: ___"
       }
     ],
@@ -463,7 +471,7 @@
     },
     {
       "q": "How do I book?",
-      "a": "It is easy. Send me a WhatsApp message with your dates, how many people and your hotel. I will reply with the price."
+      "a": "It is easy. Send me a WhatsApp message with your dates, how many people and your hotel. I will confirm the price and your booking."
     },
     {
       "q": "Do you speak Chinese or Korean?",

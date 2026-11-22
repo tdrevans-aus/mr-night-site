@@ -251,7 +251,7 @@ function render(raw, opts) {
     return '<article class="fcard' + (hlc ? ' fcard-hl' : (f.wide === true ? ' fcard-wide' : '')) + '">' + ph + '<div class="body">' + (hlc ? '<span class="hl-tag">My favourite</span>' : '') + (has(f.kicker) ? '<p class="fkick">' + esc(f.kicker) + '</p>' : '') +
       '<h3>' + esc(t) + '</h3>' + (has(f.quote) ? '<blockquote class="fq">\u201c' + esc(f.quote) + '\u201d<cite>\u2014 ' + esc(name) + '</cite></blockquote>' : '') +
       (has(f.text) ? '<p>' + rich(f.text) + '</p>' : '') + (has(f.note) ? '<p class="fnote">' + rich(f.note) + '</p>' : '') + (f.show_luggage === true && luggage ? '<p class="fnote lug-s">' + rich(luggage) + '</p>' : '') +
-      '<div class="row">' + price(f.price, { from: f.from === true }) + waBtn('btn btn-wa btn-sm', f.message || ('Hi Mr Night, I would like: ' + t), has(f.price) ? 'Book' : 'Ask') + '</div></div></article>';
+      '<div class="row">' + price(f.price, { from: f.from === true, per: str(f.per) }) + waBtn('btn btn-wa btn-sm', f.message || ('Hi Mr Night, I would like: ' + t), has(f.price) ? 'Book' : 'Ask') + '</div></div></article>';
   }).join('');
   out += '<section class="sec featured" id="trips" aria-labelledby="trips-h"><div class="wrap"><div class="sec-head">' +
     '<p class="eyebrow">' + esc(T('trips.featured_eyebrow', 'Featured trips')) + '</p><h2 id="trips-h">' + esc(T('trips.featured_heading', 'My favourite trips')) + '</h2>' +
